@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_04_160553) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_04_162107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,54 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_04_160553) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "histories", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_alternative_id", null: false
+    t.bigint "shop_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_alternative_id"], name: "index_histories_on_product_alternative_id"
+    t.index ["shop_id"], name: "index_histories_on_shop_id"
+    t.index ["user_id"], name: "index_histories_on_user_id"
+  end
+
+  create_table "product_alternatives", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.string "eco_score"
+    t.text "caracteristics"
+    t.float "price"
+    t.string "bar_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_alternatives_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shop_alternatives", force: :cascade do |t|
+    t.bigint "product_alternative_id", null: false
+    t.bigint "shop_id", null: false
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_alternative_id"], name: "index_shop_alternatives_on_product_alternative_id"
+    t.index ["shop_id"], name: "index_shop_alternatives_on_shop_id"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.float "price"
+    t.string "opening_hours"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -50,10 +98,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_04_160553) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.float "total_score"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "histories", "product_alternatives"
+  add_foreign_key "histories", "shops"
+  add_foreign_key "histories", "users"
+  add_foreign_key "product_alternatives", "products"
+  add_foreign_key "shop_alternatives", "product_alternatives"
+  add_foreign_key "shop_alternatives", "shops"
 end
