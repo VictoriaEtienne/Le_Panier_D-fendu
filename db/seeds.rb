@@ -9,14 +9,64 @@ require 'csv'
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+puts "Destroying records..."
+ProductAlternative.destroy_all
+Product.destroy_all
+puts "Records destroyed"
+
 
 CSV_PRODUCTS = File.join('db', 'seeds', 'agribalyse_synthese_v1.csv')
 
+counter = 0
+
+puts "Creating products and products aleternatives with CSV (this might take a while)..."
 CSV.foreach(CSV_PRODUCTS, headers: true, header_converters: :symbol) do |row|
+  counter += 1
+
   product = Product.find_or_create_by(name: row[:nom_du_produit_en_franais])
-  ProductAlternative.create!(
-    eco_score: row[:score_unique_ef],
-    caracteristics: row[:changement_climatique]
-  )
-  #<CSV::Row code_agb:"26147" code_ciqual:"26147" groupe_daliment:"viandes, œufs, poissons" sousgroupe_daliment:"poissons cuits" nom_du_produit_en_franais:"Vivaneau, cuit" lci_name:"Snapper, cooked" code_saison:"2" code_avion:"0" livraison:"Glacé" matriau_demballage:"PP" prparation:"Four" dqr:"3.56" score_unique_ef:"1.018584" changement_climatique:"5.14661" appauvrissement_de_la_couche_dozone:"9.5738086e-7" rayonnements_ionisants:"1.1184273" formation_photochimique_dozone:"0.079025322" particules_fines:"8.8748946e-7" effets_toxicologiques_sur_la_sant_humaine_substances_noncancrognes:"8.2514113e-8" effets_toxicologiques_sur_la_sant_humaine_substances_cancrognes:"4.5705897e-9" acidification_terrestre_et_eaux_douces:"0.1167088" eutrophisation_eaux_douces:"0.00086705325" eutrophisation_marine:"0.027544536" eutrophisation_terrestre:"0.29874207" cotoxicit_pour_cosystmes_aquatiques_deau_douce:"27.343587" utilisation_du_sol:"18.070403" puisement_des_ressources_eau:"0.63300754" puisement_des_ressources_nergtiques:"86.252396" puisement_des_ressources_minraux:"0.00020339033">
+  eco_score = row[:score_unique_ef]
+  next unless eco_score.match?(/\A[\d\.]+\z/)
+
+  eco_score = eco_score.to_f
+  rand(3..6).times do |n|
+    # added_value = rand(-1.0..1.0)
+    # pa_eco_score = eco_score.to_f + added_value
+    pa = ProductAlternative.new(
+      product:,
+      name: "#{row[:nom_du_produit_en_franais]} n°#{n + 1}",
+      eco_score: eco_score
+    )
+    pa.caracteristics = {
+      "Changement climatique" => row[:changement_climatique],
+      score_unique_ef: row[:score_unique_ef]
+    }
+    pa.components = {
+      "Changement climatique" => row[:changement_climatique],
+      score_unique_ef: row[:score_unique_ef]
+    }
+    pa.save!
+  end
 end
+puts "Products and products aleternatives with CSV created"
+
+puts "Creating custom products..."
+# custom seeds (products && product_alternatives)
+worst_product = ProductAlternative.order(eco_score: :desc).first
+best_product = ProductAlternative.order(eco_score: :desc).last
+
+custom_product_1 = Product.new(name: "Carotte stylée")
+ProductAlternative.create!(
+  product: custom_product_1,
+  name: "Carotte stylée Franprix",
+  eco_score: worst_product.eco_score,
+  caracteristics: worst_product.caracteristics,
+  components: worst_product.components
+)
+ProductAlternative.create!(
+  product: custom_product_1,
+  name: "Carotte stylée Shoppy",
+  eco_score: best_product.eco_score,
+  caracteristics: best_product.caracteristics,
+  components: best_product.components
+)
+puts "Custom products created"
