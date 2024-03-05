@@ -11,6 +11,7 @@ class HistoriesController < ApplicationController
   end
 
   def new
+    @history = History.new
   end
 
   def destroy
