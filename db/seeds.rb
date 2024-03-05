@@ -14,7 +14,6 @@ ProductAlternative.destroy_all
 Product.destroy_all
 puts "Records destroyed"
 
-
 CSV_PRODUCTS = File.join('db', 'seeds', 'agribalyse_synthese_v1.csv')
 
 counter = 0
@@ -51,22 +50,72 @@ puts "Products and products aleternatives with CSV created"
 
 puts "Creating custom products..."
 # custom seeds (products && product_alternatives)
-worst_product = ProductAlternative.order(eco_score: :desc).first
-best_product = ProductAlternative.order(eco_score: :desc).last
+product_element = "carotte"
+patate_douce_product_alternatives = Product.where("name ILIKE ?", "%#{product_element}%").map(&:product_alternatives).flatten
+worst_product = patate_douce_product_alternatives.sort_by(&:eco_score).last
+best_product = patate_douce_product_alternatives.sort_by(&:eco_score).first
+# Product.where("name ILIKE ?", "%patate douce%").map do |product|
+#   product.product_alternatives
+# end.flatten
 
-custom_product_1 = Product.new(name: "Carotte stylée")
+custom_product_1 = Product.new(name: "Carotte")
 ProductAlternative.create!(
   product: custom_product_1,
-  name: "Carotte stylée Franprix",
+  name: "Carotte Franprix",
   eco_score: worst_product.eco_score,
   caracteristics: worst_product.caracteristics,
   components: worst_product.components
 )
 ProductAlternative.create!(
   product: custom_product_1,
-  name: "Carotte stylée Shoppy",
+  name: "Carotte La Main Verte",
   eco_score: best_product.eco_score,
   caracteristics: best_product.caracteristics,
   components: best_product.components
 )
+
+product_element = "patate douce"
+patate_douce_product_alternatives = Product.where("name ILIKE ?", "%#{product_element}%").map(&:product_alternatives).flatten
+worst_product = patate_douce_product_alternatives.sort_by(&:eco_score).last
+best_product = patate_douce_product_alternatives.sort_by(&:eco_score).first
+# Product.where("name ILIKE ?", "%patate douce%").map do |product|
+
+custom_product_2 = Product.new(name: "Patate douce")
+ProductAlternative.create!(
+  product: custom_product_2,
+  name: "Patate douce Franprix",
+  eco_score: worst_product.eco_score,
+  caracteristics: worst_product.caracteristics,
+  components: worst_product.components
+)
+ProductAlternative.create!(
+  product: custom_product_2,
+  name: "Patate douce La Main Verte",
+  eco_score: best_product.eco_score,
+  caracteristics: best_product.caracteristics,
+  components: best_product.components
+)
+
+product_element = "kiwi"
+patate_douce_product_alternatives = Product.where("name ILIKE ?", "%#{product_element}%").map(&:product_alternatives).flatten
+worst_product = patate_douce_product_alternatives.sort_by(&:eco_score).last
+best_product = patate_douce_product_alternatives.sort_by(&:eco_score).first
+# Product.where("name ILIKE ?", "%patate douce%").map do |product|
+
+custom_product_3 = Product.new(name: "Kiwi")
+ProductAlternative.create!(
+  product: custom_product_3,
+  name: "Kiwi Franprix",
+  eco_score: worst_product.eco_score,
+  caracteristics: worst_product.caracteristics,
+  components: worst_product.components
+)
+ProductAlternative.create!(
+  product: custom_product_3,
+  name: "Kiwi La Main Verte",
+  eco_score: best_product.eco_score,
+  caracteristics: best_product.caracteristics,
+  components: best_product.components
+)
+
 puts "Custom products created"
