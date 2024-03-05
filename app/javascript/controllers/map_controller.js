@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import mapboxgl from 'mapbox-gl';
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
   static values = {
@@ -13,7 +13,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "https://api.mapbox.com/styles/v1/victoriaetienne/clteetdnq002101qwdrpc718q.html?title=view&access_token=pk.eyJ1IjoidmljdG9yaWFldGllbm5lIiwiYSI6ImNsdDVtaDZ3YzAxdnQyam12ZmYwaGFjNmsifQ.Wk0rfOqiTEdibxxNMnyUQg&zoomwheel=true&fresh=true#11/40.73/-74"
+      style: "mapbox://styles/mapbox/streets-v10"
     });
 
     this.addMarkersToMap();
