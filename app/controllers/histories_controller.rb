@@ -10,6 +10,6 @@ class HistoriesController < ApplicationController
   def destroy
     @history = History.find(params[:id])
     @history.destroy
-    redirect_to histories_path
+    redirect_to histories_path, status: :see_other
   end
 end
