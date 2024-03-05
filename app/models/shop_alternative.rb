@@ -3,4 +3,4 @@ class ShopAlternative < ApplicationRecord
   belongs_to :shop
 end
 
-validates :score, presence: true
+validates :eco_score, presence: true

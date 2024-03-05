@@ -3,4 +3,4 @@ class Product < ApplicationRecord
   has_many :product_alternatives
 end
 
-validates :score, presence: true
+validates :eco_score, presence: true
