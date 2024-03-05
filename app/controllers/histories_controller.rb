@@ -7,6 +7,12 @@ class HistoriesController < ApplicationController
     @history = History.find(params[:id])
   end
 
+  def create
+  end
+
+  def new
+  end
+
   def destroy
     @history = History.find(params[:id])
     @history.destroy
