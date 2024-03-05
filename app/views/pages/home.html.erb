@@ -1,2 +1,32 @@
 <h1>Pages#hometestview</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<%= form_with model: @user, url: "/update_location", method: "post", local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude, class: "form-control", readonly: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude, class: "form-control", readonly: true %>
+  </div>
+
+  <button type="button" id="geolocation-button" class="btn btn-primary">Get My Location</button>
+  <%= f.submit "Save Location", class: "btn btn-success" %>
+<% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('geolocation-button').addEventListener('click', function () {
+      // Use JavaScript to get user's geolocation
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          document.getElementById('user_latitude').value = position.coords.latitude;
+          document.getElementById('user_longitude').value = position.coords.longitude;
+        });
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+      }
+    });
+  });
+</script>
