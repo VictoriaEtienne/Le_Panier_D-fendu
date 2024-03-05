@@ -4,7 +4,7 @@ class CreateShops < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :description
       t.float :price
-      t.string :opening_hours
+      t.jsonb :opening_hours
       t.string :address
 
       t.timestamps
