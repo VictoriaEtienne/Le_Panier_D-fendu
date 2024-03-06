@@ -11,7 +11,7 @@
     <%= f.text_field :longitude, class: "form-control", readonly: true %>
   </div>
 
-  <button type="button" id="geolocation-button" class="btn btn-primary">Get My Location</button>
+<button type="button" class="btn btn-primary" data-controller="geolocation" data-action="click->geolocation#getGeolocation">Get My Location</button>
   <%= f.submit "Save Location", class: "btn btn-success" %>
 <% end %>
 
@@ -20,5 +20,3 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
-<button type="button" data-controller="geolocation" class="btn btn-primary">Get My Location</button>

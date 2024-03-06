@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
+    console.log("coucou")
     this.element.addEventListener("click", this.getGeolocation.bind(this));
   }
 
