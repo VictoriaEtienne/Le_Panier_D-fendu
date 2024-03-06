@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_06_154313) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_06_170003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,11 +44,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_154313) do
 
   create_table "histories", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "product_alternative_id", null: false
+    t.bigint "product_alternative_id"
     t.bigint "shop_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "scanned_product_alternative_id", null: false
     t.index ["product_alternative_id"], name: "index_histories_on_product_alternative_id"
+    t.index ["scanned_product_alternative_id"], name: "index_histories_on_scanned_product_alternative_id"
     t.index ["shop_id"], name: "index_histories_on_shop_id"
     t.index ["user_id"], name: "index_histories_on_user_id"
   end
@@ -113,6 +115,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_154313) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "histories", "product_alternatives"
+  add_foreign_key "histories", "product_alternatives", column: "scanned_product_alternative_id"
   add_foreign_key "histories", "shops"
   add_foreign_key "histories", "users"
   add_foreign_key "product_alternatives", "products"
