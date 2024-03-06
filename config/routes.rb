@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   get "home_new", to: "pages#home_new"
+  get "dashboard", to: "pages#dashboard", as: :dashboard
 
   # resources
   # Defines the root path route ("/")
