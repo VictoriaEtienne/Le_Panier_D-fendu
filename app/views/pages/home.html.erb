@@ -1,5 +1,8 @@
 <h1>Pages#hometestview</h1>
 
+<ul>
+  <li><%= link_to "Nouveau scan", new_history_path %></li>
+</ul>
 <%= form_with model: @user, url: "/update_location", method: "post", local: true do |f| %>
   <div class="form-group">
     <%= f.label :latitude %>

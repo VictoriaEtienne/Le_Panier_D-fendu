@@ -86,7 +86,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_141920) do
     t.string "name"
     t.string "description"
     t.float "price"
-    t.jsonb "opening_hours"
+    t.string "opening_hours"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
