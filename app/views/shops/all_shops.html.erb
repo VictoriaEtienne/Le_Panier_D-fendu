@@ -1,8 +1,13 @@
-<% @shops.each do |shop| %>
-  <p><%= shop.name %></p>
-  <p><%= shop.description %></p>
-  <p><%= shop.opening_hours %></p>
-  <p><%= shop.address %></p>
-  <p><%= shop.latitude %></p>
-  <p><%= shop.longitude %></p>
-<% end %>
+
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <% @shops.each do |shop| %>
+    <div class="card mb-4" style="width: 18rem;">
+      <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=2304&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= shop.name %></h5>
+        <p class="card-text"><%= shop.description %>.</p>
+        <%= link_to "voir plus", shop_path(shop), class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
