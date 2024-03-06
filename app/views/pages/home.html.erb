@@ -11,7 +11,7 @@
     <%= f.text_field :longitude, class: "form-control", readonly: true %>
   </div>
 
-  <button type="button" id="geolocation-button" class="btn btn-primary">Get My Location</button>
+<button type="button" class="btn btn-primary" data-controller="geolocation" data-action="click->geolocation#getGeolocation">Get My Location</button>
   <%= f.submit "Save Location", class: "btn btn-success" %>
 <% end %>
 
@@ -20,21 +20,3 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('geolocation-button').addEventListener('click', function () {
-      // Use JavaScript to get user's geolocation
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          document.getElementById('user_latitude').value = position.coords.latitude;
-          document.getElementById('user_longitude').value = position.coords.longitude;
-        });
-      } else {
-        console.error("Geolocation is not supported by this browser.");
-      }
-    });
-  });
-</script>
-</div>
-<button type="button" data-controller="geolocation" class="btn btn-primary">Get My Location</button>
