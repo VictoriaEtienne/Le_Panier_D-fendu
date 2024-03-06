@@ -12,6 +12,7 @@ require 'csv'
 puts "Destroying records..."
 ProductAlternative.destroy_all
 Product.destroy_all
+Shop.destroy_all
 puts "Records destroyed"
 #NEW SEED
 require 'net/http'
@@ -77,7 +78,7 @@ results["circuit_court"]["circuit_court"].each do |shop_data|
     name: shop_data["magasin"]["nom"],
     description: shop_data["magasin"]["type"],
     opening_hours: shop_data["magasin"]["horaire"],
-    address: shop_data["magasin"]["adresse"]["adresse"],
+    address:  shop_data.dig("magasin", "adresse").slice("adresse", "cp", "ville").values.join(', '),
     latitude: shop_data["lat"],
     longitude: shop_data["lon"],
   )
