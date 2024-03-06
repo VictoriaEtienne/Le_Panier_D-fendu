@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get :all_shops, on: :collection, as: :all
   end
 
+  get "home_new", to: "pages#home_new"
+
   # resources
   # Defines the root path route ("/")
   # root "posts#index"

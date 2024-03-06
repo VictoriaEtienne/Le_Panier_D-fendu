@@ -13,6 +13,9 @@ class PagesController < ApplicationController
     end
   end
 
+  def home_new
+  end
+
   def update_location
     @user = User.new(user_params)
 
