@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :histories, except: [:edit, :update]
 
   resources :product_alternatives, only: :show do
+    collection do
+      get :search
+    end
     resources :shops, only: :index
   end
 
