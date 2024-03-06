@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :shops, only: :show
 
+  get "home_new", to: "pages#home_new"
+
   # resources
   # Defines the root path route ("/")
   # root "posts#index"
