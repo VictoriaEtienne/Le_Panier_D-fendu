@@ -1,2 +1,18 @@
-<h1>Shops#show</h1>
-<p>Find me in app/views/shops/show.html.erb</p>
+<div class="container">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=2304&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid rounded-start" alt="Shop Image">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= @shop.name %></h5>
+        <p class="card-text"><%= @shop.description %></p>
+        <p class="card-text"><small class="text-muted">Adresse: <%= @shop.address %></small></p>
+        <p class="card-text"><small class="text-muted">Horaires: <%= @shop.opening_hours %></small></p>
+        <div class="text-center"> <!-- Div pour centrer le bouton -->
+          <%= link_to "J'y vais", "#", class: "btn btn-primary" %> <!-- Ajoutez la classe text-center pour centrer horizontalement le contenu -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
