@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :histories, except: [:edit, :update] do
-    resources :shops, only: [:index, :show]
+    resources :shops, only: [:index, :show] do
+      member do
+        get :itinerary
+      end
+    end
   end
 
   resources :product_alternatives, only: :show do
