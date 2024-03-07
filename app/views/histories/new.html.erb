@@ -1,5 +1,15 @@
-<h1>Histories#new</h1>
-<p>Find me in app/views/histories/new.html.erb</p>
-<div data-controller="barcode">
-  <div data-barcode-target="name"></div>
+<div class="position-relative h-100vh bg-black">
+  <div class="position-absolute top-50 start-0 -translate-y-50 w-100">
+    <div class="d-flex justify-content-center">
+
+      <button class="btn btn-success" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        <span role="status">Loading...</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="video-height position-absolute top-50 start-0 -translate-y-50 h-100" data-controller="barcode">
+    <div data-barcode-target="name"></div>
+  </div>
 </div>
