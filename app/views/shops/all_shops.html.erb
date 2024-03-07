@@ -1,20 +1,17 @@
-<div style="width: 600%; height: 600px;"
+<div style="width: 600px; height: 600px;"
             data-controller="map"
             data-map-markers-value="<%= @markers.to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
-<h1>Liste des magasins près de chez vous</h1>
-<div class="d-flex flex-column align-items-center justify-content-center">
-  <% @shops.each do |shop| %>
-    <div class="card mb-4" style="width: 18rem;">
-      <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=2304&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= shop.name %></h5>
-        <p class="card-text"><%= shop.description %>.</p>
-        <p class="card-text"><%= shop.address %>.</p>
-        <%= link_to "voir plus", shop_path(shop), class: "btn btn-primary" %>
-      </div>
-    </div>
-  <% end %>
+<h1>Liste des magasins</h1>
+<select id="selectShop">
+    <option value="" disabled selected>Choisissez un magasin</option>
+    <% @shops.each do |shop| %>
+        <option value="<%= shop.id %>"><%= shop.name %></option>
+    <% end %>
+</select>
+
+<div class="d-flex flex-column align-items-center justify-content-center" id="shopDetails">
+    <!-- Les détails du magasin sélectionné seront affichés ici -->
 </div>

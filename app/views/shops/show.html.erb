@@ -5,10 +5,10 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"><%= @shop.name %></h5>
-        <p class="card-text"><%= @shop.description %></p>
-        <p class="card-text"><small class="text-muted">Adresse: <%= @shop.address %></small></p>
-        <p class="card-text"><small class="text-muted">Horaires: <%= @shop.opening_hours %></small></p>
+        <h5 class="card-title text-white"><%= @shop.name %></h5>
+        <p class="card-text text-white"><%= @shop.description %></p>
+        <p class="card-text"><small class="text-white">Adresse: <%= @shop.address %></small></p>
+        <p class="card-text"><small class="text-white">Horaires: <%= @shop.opening_hours %></small></p>
         <div class="text-center"> <!-- Div pour centrer le bouton -->
           <%= link_to "J'y vais", "#", class: "btn btn-home" %> <!-- Ajoutez la classe text-center pour centrer horizontalement le contenu -->
         </div>
