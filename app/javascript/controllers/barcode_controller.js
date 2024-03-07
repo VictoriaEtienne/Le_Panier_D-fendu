@@ -2,6 +2,8 @@ import { Controller } from "@hotwired/stimulus";
 import Quagga from '@ericblade/quagga2';
 
 export default class extends Controller {
+  static targets = ["name"]
+
   connect() {
     console.log(Quagga);
     this.scanner = Quagga.init({
@@ -45,10 +47,18 @@ export default class extends Controller {
   handleDetection(data) {
     console.log(data.codeResult.code);
     Quagga.stop()
+
     fetch(`/product_alternatives/search?bar_code=${data.codeResult.code}`)
       .then(response => response.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
+        if (data.redirect_to) {
+          window.location.href = data.redirect_to;
+        }
       })
+      .catch(error => {
+        console.error('Erreur lors de la requête fetch:', error);
+      });
   }
+
 }
