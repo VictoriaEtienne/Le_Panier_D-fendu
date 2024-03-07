@@ -12,3 +12,25 @@
 @import "pages/index";
 @import "pages/home";
 @import "pages/product_alternatives_show";
+
+.h-100vh {
+  height: 100vh;
+}
+
+.-translate-y-50 {
+  transform: translateY(-50%);
+}
+
+.barcode-scanner-container {
+  video {
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.drawingBuffer {
+  width: 0% !important;
+  height: 0% !important;
+}
+

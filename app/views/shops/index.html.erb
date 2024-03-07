@@ -1,3 +1,17 @@
-<h1>Shops#index</h1>
-<p>Find me in app/views/shops/index.html.erb</p>
+<div style="width: 600px; height: 600px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 
+<h1>Liste des magasins</h1>
+<select id="selectShop">
+    <option value="" disabled selected>Choisissez un magasin</option>
+    <% @shops.each do |shop| %>
+        <option value="<%= shop.id %>"><%= shop.name %></option>
+    <% end %>
+</select>
+
+<div class="d-flex flex-column align-items-center justify-content-center" id="shopDetails">
+    <!-- Les détails du magasin sélectionné seront affichés ici -->
+</div>
