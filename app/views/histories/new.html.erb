@@ -12,6 +12,7 @@
   <div class="video-height position-absolute top-50 start-0 -translate-y-50 h-100" data-controller="barcode geolocation">
     <%= simple_form_for @history,
                         html: {
+                          class:"d-none",
                           data: {
                             barcode_target: 'form'
                           }
@@ -34,6 +35,6 @@
                       geolocation_target: 'lngInput'
                     }
                   } %>
-    <% end %>  
+    <% end %>
   </div>
 </div>
