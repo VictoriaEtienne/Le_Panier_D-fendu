@@ -88,7 +88,7 @@ CSV_PRODUCTS = File.join('db', 'seeds', 'agribalyse_synthese_v1.csv')
 
 counter = 0
 
-puts "Creating products and products aleternatives with CSV (this might take a while)..."
+puts "Creating products and products alternatives with CSV (this might take a while)..."
 CSV.foreach(CSV_PRODUCTS, headers: true, header_converters: :symbol) do |row|
   counter += 1
 
@@ -130,16 +130,46 @@ best_product = patate_douce_product_alternatives.sort_by(&:eco_score).first
 
 
 # Mapping of products to their associated pesticides
-pesticides_mapping = {
-  "Carotte Franprix" => ["Pesticide1", "Pesticide2", "Pesticide3"],
-  "Carotte La Main Verte" => ["Pesticide1", "Pesticide2", "Pesticide3"],
-  "Patate douce Franprix" => ["Pesticide4", "Pesticide5", "Pesticide6"],
-  "Patate douce La Main Verte" => ["Pesticide4", "Pesticide5", "Pesticide6"],
-  "Kiwi Franprix" => ["Pesticide7", "Pesticide8", "Pesticide9"],
-  "Kiwi La Main Verte" => ["Pesticide7", "Pesticide8", "Pesticide9"]
+
+pesticide_associations = {
+  "Pesticide1" => "Chlorpyrifos",
+  "Pesticide2" => "Glyphosate",
+  "Pesticide3" => "Métam-sodium",
+  "Pesticide4" => "Thiaclopride",
+  "Pesticide5" => "Linuron",
+  "Pesticide6" => "Pendiméthaline",
+  "Pesticide7" => "Difénoconazole",
+  "Pesticide8" => "Azoxystrobine",
+  "Pesticide9" => "Pyriméthanil",
+  "Pesticide10" => "Cuivre en aspersion",
+  "Pesticide11" => "Huile d'oignon",
+  "Pesticide12" => "Bacillus amyloliquefaciens",
+  "Pesticide13" => "Bicarbonate"
 }
 
+pesticides_effects = {
+  "Chlorpyrifos" => "insecticide organophosphoré: perturbations endocriniennes, troubles neurologiques, problèmes respiratoires, irritations cutanées, irritations oculaires, troubles gastro-intestinaux, troubles de la fertilité",
+  "Glyphosate" => "herbicide: possibilité de cancérogénicité (en contact direct ou indirect), irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, allergies (en contact direct ou indirect), perturbations endocriniennes",
+  "Thiaclopride" => "insecticide néonicotinoïde: irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, troubles neurologiques, troubles de la fertilité",
+  "Linuron" => "herbicide : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, perturbations endocriniennes, troubles de la fertilité",
+  "Pendiméthaline" => "herbicide : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, troubles neurologiques",
+  "Difénoconazole" => "fongicide triazole : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, perturbations endocriniennes, possibles effets sur la fertilité",
+  "Azoxystrobine" => "fongicide strobilurine : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, perturbations endocriniennes, allergies (en contact direct ou indirect)",
+  "Pyriméthanil" => "fongicide anilinopyrimidine : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, allergies, troubles neurologiques",
+  "Cuivre en aspersion" => "fongicide et bactéricide: irritations cutanées, irritations oculaires, problèmes respiratoires ",
+  "Granulés à l'huile d'oignon" => "répulsif, éliciteur, fongicide: allergies",
+  "Bacillus amyloliquefaciens" => "biocontrolant: pas d'effets sur la santé",
+  "Bicarbonate" => "fongicide, herbicide, régulateur du pH du sol, répulsif, désinfectant : allergies, irritations cutanées, irritations oculaires, troubles gastro-intestinaux"
+}
 
+pesticides_mapping = {
+  "Carotte Franprix" => ["Pesticide1", "Pesticide3", "Pesticide4", "Pesticide5", "Pesticide6"],
+  "Carotte La Main Verte" => ["Pesticide10", "Pesticide11"],
+  "Patate douce Franprix" => ["Pesticide1", "Pesticide2", "Pesticide3"],
+  "Patate douce La Main Verte" => [],
+  "Kiwi Franprix" => ["Pesticide1", "Pesticide3", "Pesticide7", "Pesticide8", "Pesticide9"],
+  "Kiwi La Main Verte" => ["Pesticide10", "Pesticide12", "Pesticide13"]
+}
 
 custom_product_1 = Product.new(name: "Carotte")
 ProductAlternative.create!(
@@ -147,16 +177,23 @@ ProductAlternative.create!(
   name: "Carotte Franprix",
   eco_score: worst_product.eco_score,
   environment: worst_product.environment,
-  health: worst_product.health,
+  health: worst_product.health.merge(
+    pesticides: pesticides_mapping["Carotte Franprix"].map { |p| pesticide_associations[p] },
+    pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   bar_code: "123456789"
+  )
 )
+
 ProductAlternative.create!(
   product: custom_product_1,
   name: "Carotte La Main Verte",
   eco_score: best_product.eco_score,
   environment: best_product.environment,
-  health: best_product.health,
+  health: best_product.health.merge(
+    pesticides: pesticides_mapping["Carotte La Main Verte"].map { |p| pesticide_associations[p] },
+    pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   bar_code: "123456789"
+  )
 )
 
 product_element = "patate douce"
@@ -171,16 +208,23 @@ ProductAlternative.create!(
   name: "Patate douce Franprix",
   eco_score: worst_product.eco_score,
   environment: worst_product.environment,
-  health: worst_product.health,
+  health: worst_product.health.merge(
+    pesticides: pesticides_mapping["Patate douce Franprix"].map { |p| pesticide_associations[p] },
+    pesticide_effects: pesticides_mapping["Patate douce Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   bar_code: "123456789"
+  )
 )
+
 ProductAlternative.create!(
   product: custom_product_2,
   name: "Patate douce La Main Verte",
   eco_score: best_product.eco_score,
   environment: best_product.environment,
-  health: best_product.health,
+  health: best_product.health.merge(
+    pesticides: pesticides_mapping["Patate douce La Main Verte"].map { |p| pesticide_associations[p] },
+    pesticide_effects: pesticides_mapping["Patate douce La Main Verte"].map { |p| pesticides_effects[pesticide_associations[p]] },
   bar_code: "123456789"
+  )
 )
 
 product_element = "kiwi"
@@ -195,16 +239,22 @@ ProductAlternative.create!(
   name: "Kiwi Franprix",
   eco_score: worst_product.eco_score,
   environment: worst_product.environment,
-  health: worst_product.health,
+  health: worst_product.health.merge(
+    pesticides: pesticides_mapping["Kiwi Franprix"].map { |p| pesticide_associations[p] },
+    pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   bar_code: "123456789"
+  )
 )
+
 ProductAlternative.create!(
   product: custom_product_3,
   name: "Kiwi La Main Verte",
   eco_score: best_product.eco_score,
   environment: best_product.environment,
-  health: best_product.health,
+  health: best_product.health.merge(pesticides: pesticides_mapping["Kiwi La Main Verte"].map { |p| pesticide_associations[p] },
+    pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   bar_code: "123456789"
+  )
 )
 
 puts "Custom products created"
