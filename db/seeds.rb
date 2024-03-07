@@ -105,11 +105,11 @@ CSV.foreach(CSV_PRODUCTS, headers: true, header_converters: :symbol) do |row|
       name: "#{row[:nom_du_produit_en_franais]} n°#{n + 1}",
       eco_score: eco_score
     )
-    pa.caracteristics = {
+    pa.environment = {
       "Changement climatique" => row[:changement_climatique],
       score_unique_ef: row[:score_unique_ef]
     }
-    pa.components = {
+    pa.health = {
       "Changement climatique" => row[:changement_climatique],
       score_unique_ef: row[:score_unique_ef]
     }
@@ -133,15 +133,15 @@ ProductAlternative.create!(
   product: custom_product_1,
   name: "Carotte Franprix",
   eco_score: worst_product.eco_score,
-  caracteristics: worst_product.caracteristics,
-  components: worst_product.components
+  environment: worst_product.environment,
+  health: worst_product.health
 )
 ProductAlternative.create!(
   product: custom_product_1,
   name: "Carotte La Main Verte",
   eco_score: best_product.eco_score,
-  caracteristics: best_product.caracteristics,
-  components: best_product.components
+  environment: best_product.environment,
+  health: best_product.health
 )
 
 product_element = "patate douce"
@@ -155,15 +155,15 @@ ProductAlternative.create!(
   product: custom_product_2,
   name: "Patate douce Franprix",
   eco_score: worst_product.eco_score,
-  caracteristics: worst_product.caracteristics,
-  components: worst_product.components
+  environment: worst_product.environment,
+  health: worst_product.health
 )
 ProductAlternative.create!(
   product: custom_product_2,
   name: "Patate douce La Main Verte",
   eco_score: best_product.eco_score,
-  caracteristics: best_product.caracteristics,
-  components: best_product.components
+  environment: best_product.environment,
+  health: best_product.health
 )
 
 product_element = "kiwi"
@@ -177,15 +177,15 @@ ProductAlternative.create!(
   product: custom_product_3,
   name: "Kiwi Franprix",
   eco_score: worst_product.eco_score,
-  caracteristics: worst_product.caracteristics,
-  components: worst_product.components
+  environment: worst_product.environment,
+  health: worst_product.health
 )
 ProductAlternative.create!(
   product: custom_product_3,
   name: "Kiwi La Main Verte",
   eco_score: best_product.eco_score,
-  caracteristics: best_product.caracteristics,
-  components: best_product.components
+  environment: best_product.environment,
+  health: best_product.health
 )
 
 puts "Custom products created"
