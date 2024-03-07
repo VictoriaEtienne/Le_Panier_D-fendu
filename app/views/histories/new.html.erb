@@ -1,5 +1,30 @@
 <h1>Histories#new</h1>
 <p>Find me in app/views/histories/new.html.erb</p>
-<div data-controller="barcode">
-  <div data-barcode-target="name"></div>
+<div data-controller="barcode geolocation">
+
+  <%= simple_form_for @history,
+                      html: {
+                        data: {
+                          barcode_target: 'form'
+                        }
+                      } do |f| %>
+    <%= f.input :barcode,
+                input_html: {
+                  data: {
+                    barcode_target: "codeInput"
+                  }
+                } %>
+    <%= f.input :lat,
+                input_html: {
+                  data: {
+                    geolocation_target: 'latInput'
+                  }
+                } %>
+    <%= f.input :lng,
+                input_html: {
+                  data: {
+                    geolocation_target: 'lngInput'
+                  }
+                } %>
+  <% end %>
 </div>
