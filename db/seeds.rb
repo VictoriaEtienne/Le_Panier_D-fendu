@@ -180,7 +180,7 @@ ProductAlternative.create!(
   health: worst_product.health.merge(
     pesticides: pesticides_mapping["Carotte Franprix"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
-  bar_code: "123456789"
+  bar_code: "ABC-abc-1243"
   )
 )
 
@@ -223,7 +223,7 @@ ProductAlternative.create!(
   health: best_product.health.merge(
     pesticides: pesticides_mapping["Patate douce La Main Verte"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Patate douce La Main Verte"].map { |p| pesticides_effects[pesticide_associations[p]] },
-  bar_code: "123456789"
+  bar_code: "00000000"
   )
 )
 
@@ -253,7 +253,7 @@ ProductAlternative.create!(
   environment: best_product.environment,
   health: best_product.health.merge(pesticides: pesticides_mapping["Kiwi La Main Verte"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
-  bar_code: "123456789"
+  bar_code: "00000017"
   )
 )
 

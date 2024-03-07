@@ -1,19 +1,16 @@
-<h1>Pages#hometestview</h1>
-
-<ul>
-  <li><%= link_to "Nouveau scan", new_history_path %></li>
-</ul>
-<%= form_with model: @user, url: "/update_location", method: "post", local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :latitude %>
-    <%= f.text_field :latitude, class: "form-control", readonly: true %>
+<div class="container d-flex flex-column justify-content-evenly">
+  <div class=" dividing-line d-flex">
+    <h2 class="text-rotate text-center">Le panier défendu</h2>
+    <h1 class="increase-font-size border-start">Manger aujourd'hui, se nourrir demain</h1>
   </div>
 
-  <div class="form-group">
-    <%= f.label :longitude %>
-    <%= f.text_field :longitude, class: "form-control", readonly: true %>
+  <div class="logo-home d-flex align-items-center justify-content-center">
+    <%= image_tag "logo_vegetables.png", alt: "Le panier défendu logo", class: "img-home" %>
   </div>
 
-<button type="button" class="btn btn-primary" data-controller="geolocation" data-action="click->geolocation#getGeolocation">Get My Location</button>
-  <%= f.submit "Save Location", class: "btn btn-success" %>
-<% end %>
+  <%= link_to '/histories/new', class: "btn btn-home btn-lg" do %>
+    <span>Découvrir</span>
+    <%= image_tag "chevron_bouton.png", alt: "Chevrons après découvrir" %>
+  <% end %>
+
+</div>

@@ -6,9 +6,6 @@ class PagesController < ApplicationController
     @shops = Shop.all
   end
 
-  def home_new
-  end
-
   def dashboard
     @user = current_user
     @total_score = @user.total_score
