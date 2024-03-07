@@ -1,65 +1,58 @@
-<div class="container-product-alternative d-flex flex-column justify-content-evenly">
-<div class="logo-home d-flex float-right ml-3">
-  <%= image_tag "logo_vegetables.png", alt: "Logo", style: "width: 10%" %>
-</div>
-
-<div class="product-alternative">
-  <%= image_tag "product_alter_bad_carot.jpg", alt: "Product alternative Carrot", style: "width: 100%" %>
-  <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore" %>
-  <i class="fa-solid fa-flag-usa"></i>
-  <h3>Carotte</h3>
-  <p>Franprix</p>
-</div>
-
-<div class="product-alternative-details">
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Santé</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Environnement</button>
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-      <ul>
-        <li>Pesticide 1</li>
-        <li>Pesticide 2</li>
-        <li>Pesticide 3</li>
-        <li>Pesticide 4</li>
-        <li>Pesticide 5</li>
-      </ul>
+<div class="container-product-alternative d-flex flex-column bgblack px-3 pt-3 pb-5">
+  <div class="logo-home">
+    <%= image_tag "logo_vegetables.png", alt: "Logo", style: "width: 60px"%>
   </div>
-  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-    <div class="environment-container d-none">
-      <ul>
-        <li>Émissions de gaz à effet de serre (CO2)</li>
-        <li>Destruction de la couche d'ozone</li>
-        <li>Émissions de particules fines</li>
-        <li>Oxydation photochimique</li>
-        <li>Acidification</li>
-        <li>Radioactivité</li>
-        <li>Épuisement des ressources en eau</li>
-        <li>Pollution de l'eau douce</li>
-        <li>Épuisement des ressources non renouvelables</li>
-        <li>Eutrophisation (terrestre, eau douce & marine)</li>
-        <li>Utilisation des terres</li>
-        <li>Toxicités (eau douce & humaine)</li>
-        <li>Perte de biodiversité</li>
-      </ul>
+
+  <div class="product-alternative bgblack d-grid gap-2 col-6 mx-auto">
+    <div class="product-container bg-gray-background rounded-large px-4 py-3">
+      <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot", style: "width: 100%" %>
+      <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 20%", class: "picto-icon"%>
+      <h3 class="text-center">Carotte</h3>
+      <p class="text-center mb-0"><i class="fa-solid fa-flag-usa"></i>Franprix</p>
     </div>
   </div>
+
+  <div class="product-alternative-details bgblack flex-grow-1 my-4">
+    <ul class="nav nav-tabs" id="myTab" role="tablist", style="list-style-type: none">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Santé</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Environnement</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <ul>
+          <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Pesticide 1</li>
+          <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Pesticide 2</li>
+          <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Pesticide 3</li>
+          <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Pesticide 4</li>
+          <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Pesticide 5</li>
+        </ul>
+      </div>
+    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+      <ul>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Émissions de gaz à effet de serre (CO2)</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Destruction de la couche d'ozone</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Émissions de particules fines</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Oxydation photochimique</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Acidification</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Radioactivité</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Épuisement des ressources en eau</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Pollution de l'eau douce</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Épuisement des ressources non renouvelables</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Eutrophisation (terrestre, eau douce & marine)</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Utilisation des terres</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Toxicités (eau douce & humaine)</li>
+        <li class="py-2"><%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %>Perte de biodiversité</li>
+        </ul>
+    </div>
+    </div>
   </div>
-</div>
 
-<div>
-<%= link_to '#', class: "btn btn-success btn-lg" do %>
-  <span>Voir les alternatives</span>
-<% end %>
-</div>
-<footer>
-  <%= render "shared/navbar" %>
-</footer>
-</div>
+  <%= link_to '#', class: "btn btn-success btn-lg-light text-white text-bold" do %>
+    <span>Voir les alternatives</span>
+  <% end %>
 
-<%= @product_alternative.name %>
+</div>
