@@ -5,7 +5,7 @@
   </div>
 
   <div class="logo-home d-flex align-items-center justify-content-center">
-    <img src="assets/logo_vegetables.png" alt="Le panier défendu logo" class="img-home">
+    <%= image_tag "logo_vegetables.png", alt: "Le panier défendu logo", class: "img-home" %>
   </div>
 
   <%= link_to '/histories/new', class: "btn btn-home btn-lg" do %>
@@ -14,22 +14,3 @@
   <% end %>
 
 </div>
-
-
-<ul>
-  <li><%= link_to "Nouveau scan", new_history_path %></li>
-</ul>
-<%= form_with model: @user, url: "/update_location", method: "post", local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :latitude %>
-    <%= f.text_field :latitude, class: "form-control", readonly: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :longitude %>
-    <%= f.text_field :longitude, class: "form-control", readonly: true %>
-  </div>
-
-<button type="button" class="btn btn-primary" data-controller="geolocation" data-action="click->geolocation#getGeolocation">Get My Location</button>
-  <%= f.submit "Save Location", class: "btn btn-success" %>
-<% end %>

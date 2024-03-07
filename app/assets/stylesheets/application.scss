@@ -20,8 +20,15 @@
   transform: translateY(-50%);
 }
 
-.video-height {
+.barcode-scanner-container {
   video {
     height: 100%;
+    position: relative;
+    z-index: 2;
   }
+}
+
+.drawingBuffer {
+  width: 0% !important;
+  height: 0% !important;
 }

@@ -10,8 +10,8 @@ export default class extends Controller {
         name: "Live",
         type: "LiveStream",
         constraints: {
-          width: 640,
-          height: 480,
+          width: window.innerHeight,
+          height: window.innerWidth,
           facingMode: "environment",
         },
         locator: {
