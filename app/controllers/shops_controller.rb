@@ -22,10 +22,11 @@ class ShopsController < ApplicationController
   def itinerary
     # TODO: venir find l'history quand tout sera correctement connecté
     @shop = Shop.find(params[:id])
-    user_loc = [current_user.longitude, current_user.latitude]
+    @history = History.find(params[:history_id])
+    history_loc = [@history.longitude, @history.latitude]
     @options = {
       # [lng, lat]
-      center: user_loc,
+      center: history_loc,
       zoom: 15,
       class: "h-100 w-100",
       token: ENV['MAPBOX_API_KEY'],
@@ -35,7 +36,7 @@ class ShopsController < ApplicationController
         # line_width: 2
       },
       markers: [
-        user_loc,
+        history_loc,
         [@shop.longitude, @shop.latitude]
       ]
     }

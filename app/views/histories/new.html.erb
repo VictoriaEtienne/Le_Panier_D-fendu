@@ -9,7 +9,31 @@
     </div>
   </div>
 
-  <div class="video-height position-absolute top-50 start-0 -translate-y-50 h-100" data-controller="barcode">
-    <div data-barcode-target="name"></div>
+  <div class="video-height position-absolute top-50 start-0 -translate-y-50 h-100" data-controller="barcode geolocation">
+    <%= simple_form_for @history,
+                        html: {
+                          data: {
+                            barcode_target: 'form'
+                          }
+                        } do |f| %>
+      <%= f.input :barcode,
+                  input_html: {
+                    data: {
+                      barcode_target: "codeInput"
+                    }
+                  } %>
+      <%= f.input :lat,
+                  input_html: {
+                    data: {
+                      geolocation_target: 'latInput'
+                    }
+                  } %>
+      <%= f.input :lng,
+                  input_html: {
+                    data: {
+                      geolocation_target: 'lngInput'
+                    }
+                  } %>
+    <% end %>  
   </div>
 </div>

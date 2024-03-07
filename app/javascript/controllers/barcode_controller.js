@@ -2,10 +2,9 @@ import { Controller } from "@hotwired/stimulus";
 import Quagga from '@ericblade/quagga2';
 
 export default class extends Controller {
-  static targets = ["name"]
+  static targets = ["codeInput", 'form']
 
   connect() {
-    console.log(Quagga);
     this.scanner = Quagga.init({
       inputStream: {
         name: "Live",
@@ -30,7 +29,8 @@ export default class extends Controller {
       },
       decoder: {
         readers: [
-          "code_128_reader"
+          // "code_128_reader",
+          "ean_8_reader"
         ]
       }
     }, (err) => {
@@ -38,27 +38,16 @@ export default class extends Controller {
         console.log(err);
         return;
       }
-      console.log("Initialization finished. Ready to start");
       Quagga.start();
     });
     Quagga.onDetected(this.handleDetection.bind(this));
   }
 
   handleDetection(data) {
-    console.log(data.codeResult.code);
     Quagga.stop()
-
-    fetch(`/product_alternatives/search?bar_code=${data.codeResult.code}`)
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data.redirect_to) {
-          window.location.href = data.redirect_to;
-        }
-      })
-      .catch(error => {
-        console.error('Erreur lors de la requête fetch:', error);
-      });
+    const code = data.codeResult.code
+    this.codeInputTarget.value = code
+    this.formTarget.submit()
   }
 
 }
