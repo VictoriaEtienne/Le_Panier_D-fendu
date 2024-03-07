@@ -1,30 +1,39 @@
-<h1>Histories#new</h1>
-<p>Find me in app/views/histories/new.html.erb</p>
-<div data-controller="barcode geolocation">
+<div class="position-relative h-100vh bg-black">
+  <div class="position-absolute top-50 start-0 -translate-y-50 w-100">
+    <div class="d-flex justify-content-center">
 
-  <%= simple_form_for @history,
-                      html: {
-                        data: {
-                          barcode_target: 'form'
-                        }
-                      } do |f| %>
-    <%= f.input :barcode,
-                input_html: {
-                  data: {
-                    barcode_target: "codeInput"
-                  }
-                } %>
-    <%= f.input :lat,
-                input_html: {
-                  data: {
-                    geolocation_target: 'latInput'
-                  }
-                } %>
-    <%= f.input :lng,
-                input_html: {
-                  data: {
-                    geolocation_target: 'lngInput'
-                  }
-                } %>
-  <% end %>
+      <button class="btn btn-success" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        <span role="status">Loading...</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="video-height position-absolute top-50 start-0 -translate-y-50 h-100" data-controller="barcode geolocation">
+    <%= simple_form_for @history,
+                        html: {
+                          data: {
+                            barcode_target: 'form'
+                          }
+                        } do |f| %>
+      <%= f.input :barcode,
+                  input_html: {
+                    data: {
+                      barcode_target: "codeInput"
+                    }
+                  } %>
+      <%= f.input :lat,
+                  input_html: {
+                    data: {
+                      geolocation_target: 'latInput'
+                    }
+                  } %>
+      <%= f.input :lng,
+                  input_html: {
+                    data: {
+                      geolocation_target: 'lngInput'
+                    }
+                  } %>
+    <% end %>  
+  </div>
 </div>
