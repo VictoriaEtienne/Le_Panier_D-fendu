@@ -11,3 +11,17 @@
 @import "components/index";
 @import "pages/index";
 @import "pages/home";
+
+.h-100vh {
+  height: 100vh;
+}
+
+.-translate-y-50 {
+  transform: translateY(-50%);
+}
+
+.video-height {
+  video {
+    height: 100%;
+  }
+}

@@ -148,7 +148,7 @@ ProductAlternative.create!(
   eco_score: worst_product.eco_score,
   environment: worst_product.environment,
   health: worst_product.health,
-  bar_code: "123456789"
+  bar_code: "ABC-abc-1243"
 )
 ProductAlternative.create!(
   product: custom_product_1,
@@ -180,7 +180,7 @@ ProductAlternative.create!(
   eco_score: best_product.eco_score,
   environment: best_product.environment,
   health: best_product.health,
-  bar_code: "ABC-abc-1243"
+  bar_code: "123456789"
 )
 
 product_element = "kiwi"
