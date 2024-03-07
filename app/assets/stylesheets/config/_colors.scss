@@ -16,5 +16,9 @@ $picto-c :#F5C100;
 $picto-d :#EF7E1A;
 $picto-e :#D93726;
 $green-neon: #FFFFFF;
-$gray-background:#E3FBE9;
+$gray-background:#3E413D;
 $black-background: #212121;
+
+.bg-gray-background {
+  background-color: $gray-background;
+}

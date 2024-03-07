@@ -1,5 +1,39 @@
 .container-product-alternative {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #212121;
+  color: white;
+  font-family: "Quicksand", "sans-serif";
+}
+
+.bgblack {
+  background-color: #212121;
+}
+
+.product-alternative {
+  width : 60%;
+}
+
+.product-alternative-details ul li {
+  list-style-type: none;
+}
+
+.product-container {
+  position: relative;
+  width: 100%;
+}
+
+.product-alternative img {
+  width: 100%;
+  height: auto;
+}
+
+.picto-icon {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+.nav-link {
+  color: white;
 }
