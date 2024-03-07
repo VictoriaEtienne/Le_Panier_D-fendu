@@ -45,10 +45,23 @@ export default class extends Controller {
   handleDetection(data) {
     console.log(data.codeResult.code);
     Quagga.stop()
+    const form = document.getElementById('barcodeForm');
+    const barcodeInput = document.getElementById('barcodeInput');
+    barcodeInput.value = data.codeResult.code;
+    console.log("Code-barres détecté:", data.codeResult.code);
+
     fetch(`/product_alternatives/search?bar_code=${data.codeResult.code}`)
       .then(response => response.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
       })
+      .catch(error => {
+        console.error('Erreur lors de la requête fetch:', error);
+      });
+
+    // const event = new CustomEvent('barcodeDetected', { detail: { code: data.codeResult.code } });
+    // window.dispatchEvent(event);
+    // form.submit();
   }
+
 }
