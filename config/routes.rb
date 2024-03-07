@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     get :all_shops, on: :collection, as: :all
   end
 
-  get "home_new", to: "pages#home_new"
   get "dashboard", to: "pages#dashboard", as: :dashboard
 
   # resources
