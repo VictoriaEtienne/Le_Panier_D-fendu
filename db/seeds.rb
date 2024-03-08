@@ -15,6 +15,11 @@ Product.destroy_all
 Shop.destroy_all
 puts "Records destroyed"
 #NEW SEED
+
+User.create!(
+  email: "test@test.com",
+  password: "azerty"
+)
 require 'net/http'
 require 'uri'
 require 'zlib'
