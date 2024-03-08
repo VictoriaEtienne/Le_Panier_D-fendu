@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :shops, only: [:index, :show]
 
   get "dashboard", to: "pages#dashboard", as: :dashboard
-
+  get "score", to: "pages#score"
   # resources
   # Defines the root path route ("/")
   # root "posts#index"
