@@ -1,8 +1,8 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lepanierdefendu">
+<div class="navbar navbar-expand-sm navbar-light navbar-lepanierdefendu my-3">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
+    <%= link_to "#", class: "nav-menu" do %>
+      <%= image_tag image_path("nav-menu.png") %>
+    <% end %>
     <%= link_to "/histories/new", class: "navbar-icon-button" do %>
       <%= image_tag image_path("icon_button.png"), width: 48, height: 48 %>
     <% end %>

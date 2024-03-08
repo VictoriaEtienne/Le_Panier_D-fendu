@@ -135,40 +135,6 @@ best_product = carotte_product_alternatives.sort_by(&:eco_score).first
 
 # Mapping of products to their eco-score
 
-eco_score_element_details = [
-  "Émissions de gaz à effet de serre (CO2)",
-  "Destruction de la couche d'ozone",
-  "Émissions de particules fines",
-  "Oxydation photochimique",
-  "Acidification",
-  "Radioactivité",
-  "Épuisement des ressources en eau",
-  "Pollution de l'eau douce",
-  "Épuisement des ressources non renouvelables",
-  "Eutrophisation (terrestre, eau douce & marine)",
-  "Utilisation des terres",
-  "Toxicités (eau douce & humaine)",
-  "Perte de biodiversité",
-  "Épuisement des ressources minérales"
-]
-
-eco_score_element_effect = {
-  "Émissions de gaz à effet de serre (CO2)" => "Correspond à la modification du climat, affectant l'écosystème global (exprimé en équivalent CO2)",
-  "Destruction de la couche d'ozone" => "La couche d'ozone est située en haute altitude dans l'atmosphère, elle protège des rayons ultra-violets solaires. Son appauvrissement augmente l'exposition de l'ensemble des êtres vivants à ces radiations négatives (cancérigènes en particulier)",
-  "Émissions de particules fines" => "Les particules fines pénètrent dans les organismes, notamment via les poumons. Elles ont un effet sur la santé humaine",
-  "Oxydation photochimique" => "Correspond à une dégradation de la qualité de l'air, principalement via la formation de brouillard de basse altitude nommé smog. Il a des conséquences néfastes sur la santé.",
-  "Acidification" => "Acidification	Acidification terrestre et eaux douces	Résulte d'émissions chimiques dans l'atmosphère qui se redéposent dans les écosystèmes. Cette problématique est connue en particulier via le phénomène des pluies acides",
-  "Radioactivité" => "Correspond aux effets de la radioactivité. Cet impact correspond aux déchets radioactifs résultants de la production de l'électricité nucléaire",
-  "Épuisement des ressources en eau" => "Correspond à la consommation d'eau et son épuisement dans certaines régions. Cette catégorie tient compte de la rareté (cela a plus d’impact de consommer un litre d'eau au Maroc qu'en Bretagne)",
-  "Pollution de l'eau douce" => "Correspond à la présence de micro-organismes, de substances chimiques dans l'eau. Elle peut concerner les cours d’eau, les nappes d’eau, les eaux saumatres mais également l’eau de pluie et la rosée",
-  "Épuisement des ressources non renouvelables" => "Correspond à l'épuisement des ressources énergétiques non renouvelables : charbon, gaz, pétrole, uranium.",
-  "Eutrophisation (terrestre, eau douce & marine)" => "Correspond à un enrichissement excessif des milieux naturels en nutriments, ce qui conduit à une prolifération et une asphyxie (zone morte)",
-  "Utilisation des terres" => "Les terres sont une ressource finie, qui se partage entre milieux naturels (forêt), productifs (agricultures) et urbains. L'usage des terres et les habitats déterminent dans une large mesure la biodiversité. Cette catégorie reflète donc l'impact d'une activité sur la dégradation des terres, en référence à « l'état naturel »",
-  "Toxicités (eau douce & humaine)" => "Ecotoxicité d'eau douce, Toxicité humaine cancérigène et non cancérigène. Indicateurs de toxicité via la contamination de l'environnement. Ces indicateurs sont encore peu robustes actuellement",
-  "Perte de biodiversité" => "Implique l'extinction d'espèces (végétales ou animales) dans le monde entier, ainsi que la réduction ou la perte locale d'espèces dans un habitat donné",
-  "Épuisement des ressources minérales" => "Correspond à l'épuisement des ressources minérales non renouvelables : cuivre, potasse, terres rares, sable"
-}
-
 pesticide_associations = {
   "Pesticide1" => "Chlorpyrifos",
   "Pesticide2" => "Glyphosate",
@@ -214,10 +180,7 @@ ProductAlternative.create!(
   product: custom_product_1,
   name: "Carotte Franprix",
   eco_score: worst_product.eco_score,
-  environment: worst_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect,
-  ),
+  environment: worst_product.environment,
   health: worst_product.health.merge(
     pesticides: pesticides_mapping["Carotte Franprix"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
@@ -229,10 +192,7 @@ ProductAlternative.create!(
   product: custom_product_1,
   name: "Carotte La Main Verte",
   eco_score: best_product.eco_score,
-  environment: best_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect
-  ),
+  environment: best_product.environment,
   health: best_product.health.merge(
     pesticides: pesticides_mapping["Carotte La Main Verte"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
@@ -251,10 +211,7 @@ ProductAlternative.create!(
   product: custom_product_2,
   name: "Patate douce Franprix",
   eco_score: worst_product.eco_score,
-  environment: worst_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect
-  ),
+  environment: worst_product.environment,
   health: worst_product.health.merge(
     pesticides: pesticides_mapping["Patate douce Franprix"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Patate douce Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
@@ -262,14 +219,11 @@ ProductAlternative.create!(
   bar_code: "123456789"
 )
 
-ProductAlternative.create!(
+patate_douce = ProductAlternative.create!(
   product: custom_product_2,
   name: "Patate douce La Main Verte",
   eco_score: best_product.eco_score,
-  environment: best_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect
-  ),
+  environment: best_product.environment,
   health: best_product.health.merge(
     pesticides: pesticides_mapping["Patate douce La Main Verte"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Patate douce La Main Verte"].map { |p| pesticides_effects[pesticide_associations[p]] },
@@ -284,14 +238,11 @@ best_product = kiwi_product_alternatives.sort_by(&:eco_score).first
 # Product.where("name ILIKE ?", "%patate douce%").map do |product|
 
 custom_product_3 = Product.new(name: "Kiwi")
-ProductAlternative.create!(
+kiwi_bad = ProductAlternative.create!(
   product: custom_product_3,
   name: "Kiwi Franprix",
   eco_score: worst_product.eco_score,
-  environment: worst_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect
-  ),
+  environment: worst_product.environment,
   health: worst_product.health.merge(
     pesticides: pesticides_mapping["Kiwi Franprix"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
@@ -299,18 +250,28 @@ ProductAlternative.create!(
   bar_code: "123456789"
 )
 
-ProductAlternative.create!(
+kiwi = ProductAlternative.create!(
   product: custom_product_3,
   name: "Kiwi La Main Verte",
   eco_score: best_product.eco_score,
-  environment: best_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect
-  ),
-  health: best_product.health.merge(pesticides: pesticides_mapping["Kiwi La Main Verte"].map { |p| pesticide_associations[p] },
+  environment: best_product.environment,
+  health: best_product.health.merge(
+    pesticides: pesticides_mapping["Kiwi La Main Verte"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   ),
   bar_code: "00000017"
 )
 
 puts "Custom products created"
+
+shop_main_verte = Shop.find_by(name: "LA MAIN VERTE")
+
+ShopAlternative.create!(
+  product_alternative: patate_douce,
+  shop: shop_main_verte
+)
+
+ShopAlternative.create!(
+  product_alternative: kiwi_bad,
+  shop: shop_main_verte
+)
