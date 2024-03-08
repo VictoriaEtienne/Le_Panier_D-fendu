@@ -26,6 +26,7 @@ class ShopsController < ApplicationController
   def show
     # TODO: venir find l'history quand tout sera correctement connecté
     @shop = Shop.find(params[:id])
+    @history = session[:last_history_id]
   end
 
   def itinerary
