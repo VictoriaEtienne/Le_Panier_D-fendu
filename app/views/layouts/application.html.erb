@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="overscroll-none">
   <head>
     <title>PanierDefendu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,15 +23,18 @@
     <%= render 'shared/ios_pwa_links' %>
   </head>
 
-  <body>
-    <%= render "shared/flashes" %>
-    <%= yield %>
-    <% unless action_name == "home" %>
-      <footer>
-        <div class="navbar-footer">
+  <body class="overscroll-none">
+    <div class="phone-container">
+      <div class="phone-container-content">
+        <%= render "shared/flashes" %>
+        <%= yield %>
+      </div>
+      <% unless action_name == "home" %>
+        <div class="navbar-footer-filler"></div>
+        <footer class="navbar-footer navbar-height">
           <%= render "shared/navbar" %>
-        </div>
-      </footer>
-    <% end %>
+        </footer>
+      <% end %>
+    </div>
   </body>
 </html>

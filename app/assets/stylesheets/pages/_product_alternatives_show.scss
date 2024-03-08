@@ -14,8 +14,13 @@
   width : 60%;
 }
 
+.product-alternative-details {
+  padding: 5%;
+}
+
 .product-alternative-details ul li {
   list-style-type: none;
+  padding: 0;
 }
 
 .product-container {
@@ -36,4 +41,11 @@
 
 .nav-link {
   color: white;
+}
+
+.btn {
+  margin-left: 12%;
+  margin-right: 12%;
+  position: sticky;
+  background-color: #1DDD50;
 }
