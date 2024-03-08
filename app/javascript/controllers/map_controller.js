@@ -15,13 +15,23 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.tokenValue;
-
-    this.map = new mapboxgl.Map({
+    let mapOptions = {
       container: this.element, // l'élément container
       style: 'mapbox://styles/mapbox/streets-v11', // style de la carte
-      center: this.centerValue, // centre de la carte
       zoom: this.zoomValue, // zoom de la carte
-    });
+    }
+    if (this.mapCenterValue && this.mapCenterValue.length > 0) {
+      mapOptions = {
+        ...mapOptions,
+        center: this.centerValue, // centre de la carte
+      }
+    } else {
+      mapOptions = {
+        ...mapOptions,
+        center: [2.3, 46]
+      }
+    }
+    this.map = new mapboxgl.Map(mapOptions);
 
     if (this.markersValue.length > 0) {
       this._addMarkers();

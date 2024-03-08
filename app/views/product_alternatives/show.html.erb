@@ -7,7 +7,7 @@
     <div class="product-container bg-gray-background rounded-large px-4 py-3">
       <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot", style: "width: 100%" %>
       <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 20%", class: "picto-icon"%>
-      <h3 class="text-center">Carotte</h3>
+      <h3 class="text-center"> <%= @product_alternative.product.name %></h3>
       <p class="text-center mb-0"><i class="fa-solid fa-flag-usa"></i>Franprix</p>
     </div>
   </div>
@@ -51,8 +51,5 @@
     </div>
   </div>
 
-  <%= link_to '#', class: "btn btn-success btn-lg-light text-white text-bold" do %>
-    <span>Voir les alternatives</span>
-  <% end %>
-</div>
-
+  <%= link_to "Voir les alternatives", product_alternative_shops_path(@product_alternative), class: "btn btn-success btn-lg-light text-white text-bold" %>
+  </div>

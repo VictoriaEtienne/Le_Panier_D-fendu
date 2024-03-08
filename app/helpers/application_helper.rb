@@ -8,16 +8,21 @@ module ApplicationHelper
   private
 
   def map_data(options)
-    {
+    opt = {
       controller: 'map',
       map_center_value: options.fetch(:center, { lat: 0, lng: 0 }),
       map_zoom_value: options.fetch(:zoom, 15),
       map_markers_value: options.fetch(:markers, []),
       map_token_value: options.fetch(:token, Mapbox.access_token),
-      map_path_value: options.fetch(:path, 'line'),
-      map_path_coordinates_value: route_data(options[:markers], options[:path]),
-      map_path_options_value: options.fetch(:path_options, {})
     }
+    if options[:path]
+      opt.merge!({
+        map_path_value: options.fetch(:path, 'line'),
+        map_path_coordinates_value: route_data(options[:markers], options[:path]),
+        map_path_options_value: options.fetch(:path_options, {})
+      })
+    end
+    opt
   end
 
   def route_data(markers, type)
