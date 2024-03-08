@@ -34,6 +34,7 @@ class ShopsController < ApplicationController
     # TODO: venir find l'history quand tout sera correctement connecté
     @shop = Shop.find(params[:id])
     @history = History.find(params[:history_id])
+    @history.update(shop: @shop)
     history_loc = [@history.lng, @history.lat]
     @options = {
       # [lng, lat]
