@@ -154,10 +154,10 @@ eco_score_element_details = [
 
 eco_score_element_effect = {
   "Émissions de gaz à effet de serre (CO2)" => "Correspond à la modification du climat, affectant l'écosystème global (exprimé en équivalent CO2)",
-  "Destruction de la couche d'ozone" => "La couche d'ozone est située en haute altitude dans l'atmosphère, elle protège des rayons ultra-violets solaires. Son appauvrissement augmente l'exposition de l'ensemble des êtres vivants à ces radiations négatives (cancérigènes en particulier)",
+  "Destruction de la couche d'ozone" => "Son appauvrissement augmente l'exposition de l'ensemble des êtres vivants à des radiations négatives (cancérigènes en particulier)",
   "Émissions de particules fines" => "Les particules fines pénètrent dans les organismes, notamment via les poumons. Elles ont un effet sur la santé humaine",
   "Oxydation photochimique" => "Correspond à une dégradation de la qualité de l'air, principalement via la formation de brouillard de basse altitude nommé smog. Il a des conséquences néfastes sur la santé.",
-  "Acidification" => "Acidification	Acidification terrestre et eaux douces	Résulte d'émissions chimiques dans l'atmosphère qui se redéposent dans les écosystèmes. Cette problématique est connue en particulier via le phénomène des pluies acides",
+  "Acidification" => "Résulte d'émissions chimiques dans l'atmosphère qui se redéposent dans les écosystèmes. Cette problématique est connue en particulier via le phénomène des pluies acides",
   "Radioactivité" => "Correspond aux effets de la radioactivité. Cet impact correspond aux déchets radioactifs résultants de la production de l'électricité nucléaire",
   "Épuisement des ressources en eau" => "Correspond à la consommation d'eau et son épuisement dans certaines régions. Cette catégorie tient compte de la rareté (cela a plus d’impact de consommer un litre d'eau au Maroc qu'en Bretagne)",
   "Pollution de l'eau douce" => "Correspond à la présence de micro-organismes, de substances chimiques dans l'eau. Elle peut concerner les cours d’eau, les nappes d’eau, les eaux saumatres mais également l’eau de pluie et la rosée",
@@ -214,10 +214,7 @@ ProductAlternative.create!(
   product: custom_product_1,
   name: "Carotte Franprix",
   eco_score: worst_product.eco_score,
-  environment: worst_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect,
-  ),
+  environment: worst_product.environment,
   health: worst_product.health.merge(
     pesticides: pesticides_mapping["Carotte Franprix"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
@@ -229,10 +226,7 @@ ProductAlternative.create!(
   product: custom_product_1,
   name: "Carotte La Main Verte",
   eco_score: best_product.eco_score,
-  environment: best_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect
-  ),
+  environment: best_product.environment,
   health: best_product.health.merge(
     pesticides: pesticides_mapping["Carotte La Main Verte"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
@@ -251,10 +245,7 @@ ProductAlternative.create!(
   product: custom_product_2,
   name: "Patate douce Franprix",
   eco_score: worst_product.eco_score,
-  environment: worst_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect
-  ),
+  environment: worst_product.environment,
   health: worst_product.health.merge(
     pesticides: pesticides_mapping["Patate douce Franprix"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Patate douce Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
@@ -266,10 +257,7 @@ ProductAlternative.create!(
   product: custom_product_2,
   name: "Patate douce La Main Verte",
   eco_score: best_product.eco_score,
-  environment: best_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect
-  ),
+  environment: best_product.environment,
   health: best_product.health.merge(
     pesticides: pesticides_mapping["Patate douce La Main Verte"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Patate douce La Main Verte"].map { |p| pesticides_effects[pesticide_associations[p]] },
@@ -288,10 +276,7 @@ ProductAlternative.create!(
   product: custom_product_3,
   name: "Kiwi Franprix",
   eco_score: worst_product.eco_score,
-  environment: worst_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect
-  ),
+  environment: worst_product.environment,
   health: worst_product.health.merge(
     pesticides: pesticides_mapping["Kiwi Franprix"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
@@ -303,11 +288,9 @@ ProductAlternative.create!(
   product: custom_product_3,
   name: "Kiwi La Main Verte",
   eco_score: best_product.eco_score,
-  environment: best_product.environment.merge(
-    eco_score_elements: eco_score_element_details,
-    eco_score_elements_effect: eco_score_element_effect
-  ),
-  health: best_product.health.merge(pesticides: pesticides_mapping["Kiwi La Main Verte"].map { |p| pesticide_associations[p] },
+  environment: best_product.environment,
+  health: best_product.health.merge(
+    pesticides: pesticides_mapping["Kiwi La Main Verte"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   ),
   bar_code: "00000017"
