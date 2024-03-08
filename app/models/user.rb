@@ -4,8 +4,6 @@ class User < ApplicationRecord
   has_many :histories
   has_many :product_alternatives, through: :histories
   has_many :shops, through: :histories
-  validates :latitude, presence: true
-  validates :longitude, presence: true
 end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

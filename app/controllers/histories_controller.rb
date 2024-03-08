@@ -11,7 +11,7 @@ class HistoriesController < ApplicationController
     @history = History.new(history_params)
     @history.user = current_user
     @product_alternative = ProductAlternative.find_by(bar_code: params[:history][:barcode])
-    @product_alternative = ProductAlternative.first
+    # @product_alternative = ProductAlternative.first
     @history.scanned_product_alternative = @product_alternative
     if @product_alternative && @history.save
       redirect_to product_alternative_path(@product_alternative)
