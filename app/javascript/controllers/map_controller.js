@@ -19,8 +19,8 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element, // l'élément container
       style: 'mapbox://styles/mapbox/streets-v11', // style de la carte
-      center: this.centerValue, // centre de la carte
-      zoom: this.zoomValue, // zoom de la carte
+      // center: this.centerValue, // centre de la carte
+      // zoom: this.zoomValue, // zoom de la carte
     });
 
     if (this.markersValue.length > 0) {
