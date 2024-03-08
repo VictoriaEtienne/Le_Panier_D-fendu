@@ -1,2 +1,21 @@
-<h1>Histories#index</h1>
-<p>Find me in app/views/histories/index.html.erb</p>
+<div class="container-histories d-flex flex-column bgblack px-3 pt-3 pb-5">
+  <%= render 'shared/topbar' %>
+
+  <% if @histories.empty? %>
+    <h3 class="text-white">Pas encore de Scan</h3>
+  <% else %>
+    <% @histories.each do |history| %>
+      <%= link_to product_alternative_path(history.scanned_product_alternative) do %>
+        <div class="histories bgblack d-grid gap-2 col-10 mx-auto my-3">
+          <div class="product-container bg-gray-background rounded-large px-4 py-3">
+            <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot", style: "width: 100%" %>
+            <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 20%", class: "picto-icon"%>
+            <h3 class="text-center"><%= history.scanned_product_alternative.name %></h3>
+            <p class="text-center mb-0"><%= history.shop.name %></p>
+            <%# <%= link_to "", product_alternatives#show %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,6 +1,6 @@
 class HistoriesController < ApplicationController
   def index
-    @histories = History.all
+    @histories = History.where(user: current_user)
   end
 
   def show

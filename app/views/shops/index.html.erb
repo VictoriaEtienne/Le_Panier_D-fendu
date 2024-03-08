@@ -1,14 +1,13 @@
-<div class="h-100vh">
+<div class="container pt-3">
   <%= map @options %>
+  <h1 class="text-white py-2">Liste des magasins</h1>
+  <select id="selectShop">
+      <option value="" disabled selected>Choisissez un magasin</option>
+      <% @shops.each do |shop| %>
+          <option value="<%= shop.id %>"><%= shop.name %></option>
+      <% end %>
+  </select>
 </div>
-
-<h1>Liste des magasins</h1>
-<select id="selectShop">
-    <option value="" disabled selected>Choisissez un magasin</option>
-    <% @shops.each do |shop| %>
-        <option value="<%= shop.id %>"><%= shop.name %></option>
-    <% end %>
-</select>
 
 <div class="d-flex flex-column align-items-center justify-content-center" id="shopDetails">
     <!-- Les détails du magasin sélectionné seront affichés ici -->
