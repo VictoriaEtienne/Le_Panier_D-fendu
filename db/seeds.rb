@@ -247,7 +247,7 @@ kiwi_bad = ProductAlternative.create!(
     pesticides: pesticides_mapping["Kiwi Franprix"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   ),
-  bar_code: "123456789"
+  bar_code: "00000017"
 )
 
 kiwi = ProductAlternative.create!(
@@ -259,12 +259,14 @@ kiwi = ProductAlternative.create!(
     pesticides: pesticides_mapping["Kiwi La Main Verte"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   ),
-  bar_code: "00000017"
+  bar_code: "00000028"
 )
 
 puts "Custom products created"
 
 shop_main_verte = Shop.find_by(name: "LA MAIN VERTE")
+shop_miyam = Shop.find_by(name: "MIYAM")
+shop_saisonniers = Shop.find_by(name: "LES SAISONNIERS")
 
 ShopAlternative.create!(
   product_alternative: patate_douce,
@@ -272,6 +274,16 @@ ShopAlternative.create!(
 )
 
 ShopAlternative.create!(
-  product_alternative: kiwi_bad,
+  product_alternative: kiwi,
   shop: shop_main_verte
+)
+
+ShopAlternative.create!(
+  product_alternative: kiwi,
+  shop: shop_miyam
+)
+
+ShopAlternative.create!(
+  product_alternative: kiwi,
+  shop: shop_saisonniers
 )

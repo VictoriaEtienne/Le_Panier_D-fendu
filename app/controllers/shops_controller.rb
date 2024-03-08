@@ -4,7 +4,8 @@ class ShopsController < ApplicationController
     # - venir find l'history quand tout sera correctement connecté
     # - remplacer Shop.all par une recherche en fonction du product alternative sélectionné
     @product_alternative = ProductAlternative.find(params[:product_alternative_id])
-    @shops = @product_alternative.shops
+
+    @shops = @product_alternative.alternative_shops
     @markers = @shops.geocoded.map do |shop|
       {
         lat: shop.latitude,
@@ -26,14 +27,14 @@ class ShopsController < ApplicationController
   def show
     # TODO: venir find l'history quand tout sera correctement connecté
     @shop = Shop.find(params[:id])
-    @history = session[:last_history_id]
+    @history_id = session[:last_history_id] || History.last.id
   end
 
   def itinerary
     # TODO: venir find l'history quand tout sera correctement connecté
     @shop = Shop.find(params[:id])
     @history = History.find(params[:history_id])
-    history_loc = [@history.longitude, @history.latitude]
+    history_loc = [@history.lng, @history.lat]
     @options = {
       # [lng, lat]
       center: history_loc,
