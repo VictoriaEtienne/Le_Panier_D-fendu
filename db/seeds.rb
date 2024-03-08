@@ -219,7 +219,7 @@ ProductAlternative.create!(
   bar_code: "123456789"
 )
 
-ProductAlternative.create!(
+patate_douce = ProductAlternative.create!(
   product: custom_product_2,
   name: "Patate douce La Main Verte",
   eco_score: best_product.eco_score,
@@ -238,7 +238,7 @@ best_product = kiwi_product_alternatives.sort_by(&:eco_score).first
 # Product.where("name ILIKE ?", "%patate douce%").map do |product|
 
 custom_product_3 = Product.new(name: "Kiwi")
-ProductAlternative.create!(
+kiwi_bad = ProductAlternative.create!(
   product: custom_product_3,
   name: "Kiwi Franprix",
   eco_score: worst_product.eco_score,
@@ -250,7 +250,7 @@ ProductAlternative.create!(
   bar_code: "123456789"
 )
 
-ProductAlternative.create!(
+kiwi = ProductAlternative.create!(
   product: custom_product_3,
   name: "Kiwi La Main Verte",
   eco_score: best_product.eco_score,
@@ -263,3 +263,15 @@ ProductAlternative.create!(
 )
 
 puts "Custom products created"
+
+shop_main_verte = Shop.find_by(name: "LA MAIN VERTE")
+
+ShopAlternative.create!(
+  product_alternative: patate_douce,
+  shop: shop_main_verte
+)
+
+ShopAlternative.create!(
+  product_alternative: kiwi_bad,
+  shop: shop_main_verte
+)
