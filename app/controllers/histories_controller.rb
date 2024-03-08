@@ -14,6 +14,7 @@ class HistoriesController < ApplicationController
     # @product_alternative = ProductAlternative.first
     @history.scanned_product_alternative = @product_alternative
     if @product_alternative && @history.save
+      session[:last_history_id] = @history.id
       redirect_to product_alternative_path(@product_alternative)
     else
       render :new

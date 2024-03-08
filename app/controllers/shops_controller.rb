@@ -3,7 +3,8 @@ class ShopsController < ApplicationController
     # TODO:
     # - venir find l'history quand tout sera correctement connecté
     # - remplacer Shop.all par une recherche en fonction du product alternative sélectionné
-    @shops = Shop.all
+    @product_alternative = ProductAlternative.find(params[:product_alternative_id])
+    @shops = @product_alternative.shops
     @markers = @shops.geocoded.map do |shop|
       {
         lat: shop.latitude,
@@ -12,11 +13,20 @@ class ShopsController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: {shop: shop}),
       }
     end
+    @options = {
+      # [lng, lat]
+      # center: history_loc,
+      # zoom: 15,
+      class: "h-100 w-100",
+      token: ENV['MAPBOX_API_KEY'],
+      markers: @markers
+    }
   end
 
   def show
     # TODO: venir find l'history quand tout sera correctement connecté
     @shop = Shop.find(params[:id])
+    @history = session[:last_history_id]
   end
 
   def itinerary
