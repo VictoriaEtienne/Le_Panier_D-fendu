@@ -5,6 +5,7 @@ class ProductAlternativesController < ApplicationController
 
   def show
     @product_alternative = ProductAlternative.find(params[:id])
+    @alternatives = @product_alternative.product.product_alternatives.where.not(id: @product_alternative.id)
     @eco_score_element_details = [
       "Émissions de gaz à effet de serre (CO2)",
       "Destruction de la couche d'ozone",
