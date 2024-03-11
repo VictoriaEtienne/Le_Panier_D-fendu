@@ -4,8 +4,9 @@ class ShopsController < ApplicationController
     # - venir find l'history quand tout sera correctement connecté
     # - remplacer Shop.all par une recherche en fonction du product alternative sélectionné
     @product_alternative = ProductAlternative.find(params[:product_alternative_id])
-
-    @shops = @product_alternative.alternative_shops
+    @history = History.find_by(user: current_user, scanned_product_alternative: @product_alternative)
+    @history.update!(product_alternative: ProductAlternative.find(params[:product_alternative_id]))
+    @shops = @product_alternative.shops
     @markers = @shops.geocoded.map do |shop|
       {
         lat: shop.latitude,
