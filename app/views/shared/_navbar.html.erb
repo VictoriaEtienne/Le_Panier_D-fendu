@@ -1,13 +1,22 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lepanierdefendu my-3">
-  <div class="container-fluid">
-    <%= link_to histories_path, class: "nav-menu" do %>
-      <%= image_tag image_path("nav-menu.png") %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lepanierdefendu my-3 pt-0">
+  <div class="container-fluid d-flex justify-content-around p-1">
+    <%= link_to histories_path, class: "nav-menu", style: "text-decoration: none" do %>
+      <div class="image-container">
+        <%= image_tag image_path(action_name == "index" && controller_name == "histories" ? "logo.png" : "logo_white.png"), width: 40, height: 40 %>
+        <span>Historique</span>
+      </div>
     <% end %>
-    <%= link_to "/histories/new", class: "navbar-icon-button" do %>
-      <%= image_tag image_path("icon_button.png"), width: 72, height: 72 %>
+    <%= link_to "/histories/new", class: "navbar-icon-button", style: "text-decoration: none" do %>
+      <div class="image-container m-0">
+        <%= image_tag image_path(action_name == "new" && controller_name == "histories" ? "icon_button_green_two.png" : "icon_button_two.png"), width: 40, height: 40 %>
+        <span class="<%= 'text-vert' if action_name == "new" && controller_name == "histories"%>">Scan</span>
+      </div>
     <% end %>
-    <%= link_to score_path, class: "navbar-brand" do %>
-      <%= image_tag image_path("compteur.png") %>
+    <%= link_to score_path, class: "navbar-brand", data: { controller: "image-hover", action: "mouseover" } do %>
+      <div class="image-container" data-target="image-hover.imageContainer">
+        <%= image_tag image_path(action_name == "score" ? "high_score_two.png" : "high_score.png"), class: "normal-image", width: 40, height: 40 %>
+        <span class="<%= 'text-orange' if action_name == "score" %>">Score</span>
+      </div>
     <% end %>
   </div>
 </div>
