@@ -38,6 +38,38 @@ class ProductAlternativesController < ApplicationController
       "Perte de biodiversité" => "Implique l'extinction d'espèces (végétales ou animales) dans le monde entier, ainsi que la réduction ou la perte locale d'espèces dans un habitat donné",
       "Épuisement des ressources minérales" => "Correspond à l'épuisement des ressources minérales non renouvelables : cuivre, potasse, terres rares, sable"
     }
+    @eco_score_element_icons = {
+      "Émissions de gaz à effet de serre (CO2)" => "eco_score_icons/co2_icon.png",
+      "Destruction de la couche d'ozone" => "eco_score_icons/ozone_icon.png",
+      "Émissions de particules fines" => "eco_score_icons/particules_icon.png",
+      "Oxydation photochimique" => "eco_score_icons/oxydation_icon.png",
+      "Acidification" => "eco_score_icons/acidification_icon.png",
+      "Radioactivité" => "eco_score_icons/radioactif_icon.png",
+      "Épuisement des ressources en eau" => "eco_score_icons/ressources_eau_icon.png",
+      "Pollution de l'eau douce" => "eco_score_icons/pollution_eau_douce_icon.png",
+      "Épuisement des ressources non renouvelables" => "eco_score_icons/non_renouvelable_icon.png",
+      "Eutrophisation (terrestre, eau douce & marine)" => "eco_score_icons/eutrophisation_icon.png",
+      "Utilisation des terres" => "eco_score_icons/utilisation_terres_icon.png",
+      "Toxicités (eau douce & humaine)" => "eco_score_icons/toxicite_icon.png",
+      "Perte de biodiversité" => "eco_score_icons/biodiversite_icon.png",
+      "Épuisement des ressources minérales" => "eco_score_icons/ressources_minerales_icon.png"
+    }
+
+    @pesticides_icons = {
+      "Chlorpyrifos" => "pesticides_icon/insecticide_icon.png",
+      "Glyphosate" => "pesticides_icon/herbicide_icon.png",
+      "Métam-sodium" => "pesticides_icon/fongicide_icon.png",
+      "Thiaclopride" => "pesticides_icon/insecticide_icon.png",
+      "Linuron" => "pesticides_icon/herbicide_icon.png",
+      "Pendiméthaline" => "pesticides_icon/herbicide_icon.png",
+      "Difénoconazole" => "pesticides_icon/fongicide.png",
+      "Azoxystrobine" => "pesticides_icon/fongicide_icon.png",
+      "Pyriméthanil" => "pesticides_icon/fongicide_icon.png",
+      "Cuivre en aspersion" => "pesticides_icon/cuivre_icon.png",
+      "Granulés à l'huile d'oignon" => "pesticides_icon/granule_oignon_icon.png",
+      "Bacillus amyloliquefaciens" => "pesticides_icon/biocontrolant_icon.png",
+      "Bicarbonate" => "pesticides_icon/fongicide_icon.png"
+    }
   end
 
   def search

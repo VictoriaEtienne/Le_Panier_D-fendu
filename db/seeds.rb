@@ -10,6 +10,9 @@ require 'csv'
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 puts "Destroying records..."
+History.destroy_all
+User.destroy_all
+ShopAlternative.destroy_all
 ProductAlternative.destroy_all
 Product.destroy_all
 Shop.destroy_all
@@ -146,14 +149,30 @@ pesticide_associations = {
   "Pesticide8" => "Azoxystrobine",
   "Pesticide9" => "Pyriméthanil",
   "Pesticide10" => "Cuivre en aspersion",
-  "Pesticide11" => "Huile d'oignon",
+  "Pesticide11" => "Granulés à l'huile d'oignon",
   "Pesticide12" => "Bacillus amyloliquefaciens",
   "Pesticide13" => "Bicarbonate"
 }
 
+pesticides_icons = {
+  "Chlorpyrifos" => "insecticide_icon.png",
+  "Glyphosate" => "herbicide_icon.png",
+  "Métam-sodium" => "fongicide_icon.png",
+  "Thiaclopride" => "insecticide_icon_icon.png",
+  "Linuron" => "herbicide_icon.png",
+  "Pendiméthaline" => "herbicide_icon.png",
+  "Difénoconazole" => "fongicide.png",
+  "Azoxystrobine" => "fongicide_icon.png",
+  "Pyriméthanil" => "fongicide_icon.png",
+  "Cuivre en aspersion" => "cuivre_icon.png",
+  "Granulés à l'huile d'oignon" => "granule_oignon_icon.png",
+  "Bacillus amyloliquefaciens" => "biocontrolant_icon.png",
+  "Bicarbonate" => "fongicide_icon.png"
+}
 pesticides_effects = {
   "Chlorpyrifos" => "insecticide organophosphoré: perturbations endocriniennes, troubles neurologiques, problèmes respiratoires, irritations cutanées, irritations oculaires, troubles gastro-intestinaux, troubles de la fertilité",
   "Glyphosate" => "herbicide: possibilité de cancérogénicité (en contact direct ou indirect), irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, allergies (en contact direct ou indirect), perturbations endocriniennes",
+  "Métam-sodium" => "fongicide, herbicide et nématicide: irritations cutanées, irritations oculaires, problèmes respiratoires, troubles neurologiques",
   "Thiaclopride" => "insecticide néonicotinoïde: irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, troubles neurologiques, troubles de la fertilité",
   "Linuron" => "herbicide : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, perturbations endocriniennes, troubles de la fertilité",
   "Pendiméthaline" => "herbicide : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, troubles neurologiques",
@@ -183,9 +202,10 @@ ProductAlternative.create!(
   environment: worst_product.environment,
   health: worst_product.health.merge(
     pesticides: pesticides_mapping["Carotte Franprix"].map { |p| pesticide_associations[p] },
+    pesticide_icons: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_icons[pesticide_associations[p]] },
     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   ),
-  bar_code: "ABC-abc-1243"
+  bar_code: "00000017"
 )
 
 ProductAlternative.create!(
@@ -247,7 +267,7 @@ kiwi_bad = ProductAlternative.create!(
     pesticides: pesticides_mapping["Kiwi Franprix"].map { |p| pesticide_associations[p] },
     pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   ),
-  bar_code: "00000017"
+  bar_code: "01234567"
 )
 
 kiwi = ProductAlternative.create!(
