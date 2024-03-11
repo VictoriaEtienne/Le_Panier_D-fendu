@@ -34,6 +34,7 @@ class HistoriesController < ApplicationController
   private
 
   def history_params
-    params.require(:history).permit(:lat, :lng)
+    params.require(:history).permit(:barcode, :lat, :lng)
+
   end
 end
