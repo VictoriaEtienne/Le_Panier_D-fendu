@@ -16,7 +16,7 @@ class ShopsController < ApplicationController
     end
     @options = {
       # [lng, lat]
-      # center: history_loc,
+      center: [2.33333, 48.866667],
       # zoom: 15,
       class: "h-100 w-100",
       token: ENV['MAPBOX_API_KEY'],

@@ -1,4 +1,5 @@
-<h2><%= shop.name %></h2>
-<p><%= shop.address %></p>
-
-<%= link_to "voir plus", shop_path(shop), class: "btn btn-home" %>
+<div class="shop-block">
+  <h2 class="text-white"><%= shop.name %></h2>
+  <p class="text-white"><%= shop.address %></p>
+  <%= link_to "voir plus", shop_path(shop), class: "btn btn-sm custom-btn-shop" %>
+</div>
