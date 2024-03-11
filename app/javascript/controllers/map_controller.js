@@ -97,7 +97,7 @@ export default class extends Controller {
         'line-cap': 'round',
       },
       paint: {
-        'line-color': this.pathOptionsValue.line_color || '#000', // Choisissez une couleur pour le chemin
+        'line-color': '#1DDD50' || '#000', // Choisissez une couleur pour le chemin 'line-color': '#1DDD50',
         'line-width': this.pathOptionsValue.line_width || 5, // Choisissez une largeur de ligne pour le chemin
       },
     });
