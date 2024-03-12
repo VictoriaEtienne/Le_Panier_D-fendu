@@ -20,19 +20,19 @@ export default class extends Controller {
       style: 'mapbox://styles/mapbox/streets-v11', // style de la carte
       zoom: this.zoomValue, // zoom de la carte
     }
-    if (this.mapCenterValue && this.mapCenterValue.length > 0) {
+    if (this.centerValue && this.centerValue.length > 0) {
       mapOptions = {
         ...mapOptions,
-        center: this.centerValue, // centre de la carte
+        center: this.centerValue
+
       }
     } else {
       mapOptions = {
         ...mapOptions,
-        center: [2.3, 46]
+
       }
     }
     this.map = new mapboxgl.Map(mapOptions);
-
     if (this.markersValue.length > 0) {
       this._addMarkers();
       this._fitMapToMarkers();
@@ -46,9 +46,12 @@ export default class extends Controller {
   }
 
   _addMarkers() {
+
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
-      new mapboxgl.Marker().setLngLat(marker).setPopup(popup).addTo(this.map);
+      const customMarker = document.createElement("div")
+      customMarker.innerHTML = marker.marker_html
+      new mapboxgl.Marker(customMarker).setLngLat(marker).setPopup(popup).addTo(this.map);
     });
   }
 
@@ -94,7 +97,7 @@ export default class extends Controller {
         'line-cap': 'round',
       },
       paint: {
-        'line-color': this.pathOptionsValue.line_color || '#000', // Choisissez une couleur pour le chemin
+        'line-color': '#1DDD50' || '#000', // Choisissez une couleur pour le chemin 'line-color': '#1DDD50',
         'line-width': this.pathOptionsValue.line_width || 5, // Choisissez une largeur de ligne pour le chemin
       },
     });

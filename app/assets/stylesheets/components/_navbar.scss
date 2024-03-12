@@ -1,17 +1,27 @@
 .navbar-height {
   height: calc(#{$navbar-height} + 1.75rem);
+  text-decoration: none;
 }
 
 .navbar-lepanierdefendu {
-  justify-content: space-between;
   background-color: #3E413D;
-  border-radius: 15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 32px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   padding-bottom: 1.75rem;
   height: 100%;
+}
+
+.text-rouge {
+  color: #F70D0D !important;
+}
+
+.text-orange {
+  color: #fca601 !important;
+}
+
+.text-vert {
+  color: #1DDD50 !important;
 }
 
 .navbar-lepanierdefendu .navbar-collapse {
@@ -22,6 +32,29 @@
   width: 40px;
 }
 
-.container-fluid {
-  background-color: #3E413D;
+.image-container {
+  display: block;
+  text-align: center;
+  font-family: "Quicksand", "sans-serif";
+}
+
+.image-container img {
+  display: block;
+  margin: 0 auto;
+}
+
+.image-container span {
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 12px;
+  color: white;
+}
+
+.image-container .hover-image {
+  display: none;
+}
+
+.image-container img.hidden {
+  display: none;
 }

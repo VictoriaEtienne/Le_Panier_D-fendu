@@ -41,6 +41,9 @@
 
 .nav-link {
   color: white;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .btn {
@@ -55,7 +58,7 @@
 .container-histories {
   a {
     text-decoration: none;
-    color: white;
+    color: #3E413D;
   }
 }
 
@@ -126,4 +129,24 @@
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
+
+}
+
+.icon-text-spacing {
+  margin-left: 8px; /* Ajoutez la marge à gauche pour créer de l'espace entre l'icône et le texte */
+}
+
+.nav-tabs {
+  background-color: #3E413D;
+}
+
+.nav-show {
+  justify-content: space-evenly;
+  padding: 2px;
+  border-radius: 50px;
+  background-color: #3E413D;
+}
+
+.show-elements {
+  padding-left: 0px!important;
 }

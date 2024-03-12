@@ -8,51 +8,62 @@
       <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot", style: "width: 100%" %>
       <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 20%", class: "picto-icon"%>
       <h3 class="text-center"> <%= @product_alternative.product.name %></h3>
-      <p class="text-center mb-0"><i class="fa-solid fa-flag-usa"></i>Franprix</p>
+      <p class="text-center mb-0"><%= @product_alternative.shops.first.nil? ? 'Franprix' : @product_alternative.shops.first.name %></p>
     </div>
   </div>
 
   <div class="product-alternative-details bgblack flex-grow-1 my-4">
-    <ul class="nav nav-tabs" id="myTab" role="tablist", style="list-style-type: none">
+    <ul class="nav nav-tabs nav-show" id="myTab" role="tablist", style="list-style-type: none">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Santé</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Environnement</button>
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Éco-score</button>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-        <ul style="padding-left: 0px;">
-          <li class="py-2">Chlorpyrifos    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-          <li class="py-2">Métam-sodium    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-          <li class="py-2">Thiaclopride    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-          <li class="py-2">Linuron    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-          <li class="py-2">Pendiméthaline    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
+        <ul class="show-elements">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <% @product_alternative.health["pesticides"].each_with_index do |pesticide, index| %>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne<%=index%>" aria-expanded="false" aria-controls="flush-collapseOne<%=index%>">
+                  <%= image_tag @pesticides_icons[pesticide], alt: "#{pesticide} Icon", style: "width: 20px; height: 20px;" %>
+                  <span class="icon-text-spacing"><%= pesticide %></span>
+                  </button>
+                </h2>
+                <div id="flush-collapseOne<%=index%>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body"><%= @alternatives.first.health["pesticide_effects"][index] %></div>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </ul>
       </div>
     </div>
     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-      <ul style="padding-left: 0px;">
-        <li class="py-2">Émissions de gaz à effet de serre (CO2)    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Destruction de la couche d'ozone    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Émissions de particules fines    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Oxydation photochimique    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Acidification    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Radioactivité    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Épuisement des ressources en eau    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Pollution de l'eau douce    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Épuisement des ressources non renouvelables    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Eutrophisation (terrestre, eau douce & marine)    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Utilisation des terres    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Toxicités (eau douce & humaine)    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        <li class="py-2">Perte de biodiversité    <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 5%" %></li>
-        </ul>
+      <ul class="show-elements">
+        <div class="accordion accordion-flush" id="environmentAccordion">
+          <% @eco_score_element_details.each_with_index do |element, index| %>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#environmentCollapse<%=index%>" aria-expanded="false" aria-controls="environmentCollapse<%=index%>">
+                  <%= image_tag @eco_score_element_icons[element], alt: "#{element} Icon", style: "width: 20px; height: 20px;" %>
+                  <span class="icon-text-spacing"><%= element %></span>
+                </button>
+              </h2>
+              <div id="environmentCollapse<%=index%>" class="accordion-collapse collapse" data-bs-parent="#environmentAccordion">
+                <div class="accordion-body"><%= @eco_score_element_effect[element] %></div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </ul>
     </div>
-  </div>
 </div>
 
-<div class="container">
+<div class="container w-100">
   <div class="row">
     <div class="col-12">
         <button class="btn btn-primary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Afficher les alternatives</button>
