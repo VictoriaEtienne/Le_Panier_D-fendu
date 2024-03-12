@@ -1,5 +1,7 @@
 <div class="container-product-alternative d-flex flex-column bgblack px-3 pt-3 pb-5">
-  <%= render 'shared/topbar' %>
+  <div class="logo-home">
+    <%= image_tag "logo_vegetables.png", alt: "Logo", style: "width: 60px"%>
+  </div>
 
   <div class="product-alternative bgblack d-grid gap-2 col-6 mx-auto">
     <div class="product-container bg-gray-background rounded-large px-4 py-3">
@@ -59,22 +61,41 @@
         </div>
       </ul>
     </div>
-
-
-  <%= link_to product_alternative_shops_path(@product_alternative), class: "btn btn-success btn-lg-light text-white text-bold" do %>
-    <span>Voir les alternatives</span>
-  <% end %>
 </div>
-<div class="container">
+
+<div class="container w-100">
   <div class="row">
     <div class="col-12">
-      <ul>
-        <% @alternatives.each do |alt| %>
-          <li>
-            <%= alt.name %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+        <button class="btn btn-primary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Afficher les alternatives</button>
+
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+
+          <div type="button" class="offcanvas-close" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+          <div class="offcanvas-header d-flex justify-content-center">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel"::before>Alternatives</h5>
+          </div>
+
+
+
+          <div class="offcanvas-body">
+            <% @alternatives.each do |alt| %>
+                <div class="card-product">
+                  <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot"%>
+                  <%= image_tag "pictos/picto_a.svg", alt: "Ecoscore", style: "width: 14%", class: "picto-icon-alternative"%>
+                  <div class="card-product-infos">
+                    <%= alt.name %>
+                    <p><strong>Product info</strong></p>
+                  </div>
+                </div>
+            <% end %>
+                <%= link_to product_alternative_shops_path(@product_alternative), class: "btn btn-success btn-lg-light text-white text-bold w-100" do %>
+                  <span>Afficher les magasins</span>
+                <% end %>
+          </div>
+        </div>
+      </div>
+
   </div>
 </div>

@@ -47,10 +47,11 @@
 }
 
 .btn {
-  margin-left: 12%;
-  margin-right: 12%;
-  position: sticky;
+  // margin-left: 12%;
+  // margin-right: 12%;
+  // position: sticky;
   background-color: #1DDD50;
+  border-radius: 20px;
 }
 
 
@@ -59,6 +60,76 @@
     text-decoration: none;
     color: #3E413D;
   }
+}
+
+.card-product {
+  height: 140px;
+  background-color: #3E413D;
+  color: white;
+  font-family: "Quicksand", "sans-serif";
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 19px;
+  position: relative;
+}
+
+.card-product img {
+  width: 150px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+.picto-icon-alternative {
+  position: absolute;
+  top: -13px;
+  right: -3px;
+}
+
+#offcanvasBottom {
+  background-color: #212121;
+  color: white;
+  font-family: "Quicksand", "sans-serif";
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+  .offcanvas-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+.offcanvas{
+  bottom: 90px !important;
+  --bs-offcanvas-height: 70vh !important;
+}
+
+#offcanvasBottomLabel::before {
+  content: "";
+  width: 50px;
+  border-bottom: 1px solid white;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
 }
 
 .icon-text-spacing {
