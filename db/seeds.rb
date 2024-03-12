@@ -195,7 +195,7 @@ pesticides_mapping = {
 }
 
 custom_product_1 = Product.new(name: "Carotte")
-ProductAlternative.create!(
+carotte = ProductAlternative.create!(
   product: custom_product_1,
   name: "Carotte Franprix",
   eco_score: worst_product.eco_score,
@@ -294,16 +294,16 @@ ShopAlternative.create!(
 )
 
 ShopAlternative.create!(
-  product_alternative: kiwi,
+  product_alternative: carotte,
   shop: shop_main_verte
 )
 
 ShopAlternative.create!(
-  product_alternative: kiwi,
+  product_alternative: carotte,
   shop: shop_miyam
 )
 
 ShopAlternative.create!(
-  product_alternative: kiwi,
+  product_alternative: carotte,
   shop: shop_saisonniers
 )
