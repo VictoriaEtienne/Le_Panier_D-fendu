@@ -72,7 +72,6 @@
   display: flex;
   align-items: center;
   border-radius: 10px;
-  margin-bottom: 19px;
   position: relative;
 }
 
@@ -112,6 +111,8 @@
   font-family: "Quicksand", "sans-serif";
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+  overflow-y: scroll;
+  padding-bottom: 20px;
   .offcanvas-close {
     position: absolute;
     top: 1rem;
@@ -133,6 +134,11 @@
   left: 50%;
   transform: translateX(-50%);
 
+}
+
+
+.offcanvas.offcanvas-bottom {
+  height: 75vh;
 }
 
 .icon-text-spacing {
@@ -214,10 +220,18 @@
   color: white;
   width: 70%;
   margin: 0 auto;
+  padding-top: 10px;
 }
 
 .linear-gradient {
-  opacity: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  background: linear-gradient(0deg, rgba(0,0,0,0.20214023109243695) 0%, rgba(255,255,255,0.5) 100%);
+  position: fixed;
+  bottom: 60px;
+  height: 250px;
+  width: 100%;
+  margin-left: -36px;
+  box-shadow: 0px 0px 40px 40px #000000;
+
 }
 
 .header h1 {
@@ -225,4 +239,13 @@
   font-weight: light;
   font-size: 30px;
   color: white;
+}
+
+.text-header {
+  text-align: center;
+  margin-bottom: 20px; /* Add this line to center-align the text */
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: white
 }

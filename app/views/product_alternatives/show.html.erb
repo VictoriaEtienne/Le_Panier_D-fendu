@@ -1,6 +1,6 @@
 <div class="container-product-alternative d-flex flex-column bgblack px-3 pt-3 pb-5">
   <div class="text-header">
-  <h1 class="header justify-content-center">Le Panier Défendu</h1>
+  <h1 class="header">Le Panier Défendu</h1>
   </div>
 
   <div class="product-alternative bgblack d-grid gap-2 col-6 mx-auto">
@@ -48,13 +48,11 @@
           <% @eco_score_element_details.each_with_index do |element, index| %>
             <div class="accordion-item">
               <h2 class="accordion-header">
-              <div class="linear-gradient">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#environmentCollapse<%=index%>" aria-expanded="false" aria-controls="environmentCollapse<%=index%>">
                   <%= image_tag @eco_score_element_icons[element], alt: "#{element} Icon", style: "width: 20px; height: 20px;" %>
                   <span class="icon-text-spacing"><%= element %></span>
                 </button>
-              </div>
-            </h2>
+              </h2>
 
               <div id="environmentCollapse<%=index%>" class="accordion-collapse collapse" data-bs-parent="#environmentAccordion">
                 <div class="accordion-body"><%= @eco_score_element_effect[element] %></div>
@@ -66,7 +64,8 @@
     </div>
     <div class="row">
       <div class="col-12">
-          <button id="alternative-button" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Voir les alternatives</button>
+        <button id="alternative-button" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Voir les alternatives</button>
+
 
           <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
 
@@ -77,40 +76,40 @@
               <h5 class="offcanvas-title" id="offcanvasBottomLabel"::before>Alternatives</h5>
             </div>
 
-            <div class="offcanvas-body">
+            <div class="px-2 mx-2 my-2">
               <% @alternatives.each do |alt| %>
                   <div class="card-product">
                     <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot"%>
                     <%= image_tag "pictos/picto_a.svg", alt: "Ecoscore", style: "width: 14%", class: "picto-icon-alternative"%>
                     <div class="card-product-infos">
                       <%= alt.name %>
-                      <p><strong>Product info</strong></p>
+                      <p><strong></strong></p>
                     </div>
                   </div>
                 </div>
               <% end %>
 
-            <div class="offcanvas-body">
+            <div class="px-2 mx-2 my-2 ">
               <% @alternatives.each do |alt| %>
                   <div class="card-product">
                     <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot"%>
                     <%= image_tag "pictos/picto_a.svg", alt: "Ecoscore", style: "width: 14%", class: "picto-icon-alternative"%>
                     <div class="card-product-infos">
                       <%= alt.name %>
-                      <p><strong>Product info</strong></p>
+                      <p><strong><%=  %></strong></p>
                     </div>
                   </div>
                 </div>
               <% end %>
 
-            <div class="offcanvas-body">
+            <div class="px-2 mx-2 my-2">
               <% @alternatives.each do |alt| %>
                   <div class="card-product">
                     <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot"%>
                     <%= image_tag "pictos/picto_a.svg", alt: "Ecoscore", style: "width: 14%", class: "picto-icon-alternative"%>
                     <div class="card-product-infos">
                       <%= alt.name %>
-                      <p><strong>Product info</strong></p>
+                      <p><strong></strong></p>
                     </div>
                   </div>
                 </div>
@@ -120,6 +119,5 @@
               <% end %>
           </div>
         </div>
-
     </div>
 </div>
