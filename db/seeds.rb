@@ -98,9 +98,10 @@ counter = 0
 
 puts "Creating products and products alternatives with CSV (this might take a while)..."
 CSV.foreach(CSV_PRODUCTS, headers: true, header_converters: :symbol) do |row|
+  p row
   counter += 1
 
-  product = Product.find_or_create_by(name: row[:nom_du_produit_en_franais])
+  product = Product.find_or_create_by(name: row[:code_saison])
   eco_score = row[:score_unique_ef]
   next unless eco_score.match?(/\A[\d\.]+\z/)
 
@@ -110,7 +111,7 @@ CSV.foreach(CSV_PRODUCTS, headers: true, header_converters: :symbol) do |row|
     # pa_eco_score = eco_score.to_f + added_value
     pa = ProductAlternative.new(
       product:,
-      name: "#{row[:nom_du_produit_en_franais]} n°#{n + 1}",
+      name: "#{row[:code_saison]} n°#{n + 1}",
       eco_score: eco_score, bar_code: "123456789"
     )
     pa.environment = {
