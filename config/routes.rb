@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   # TODO: a remplacer quand le resources shops nesté dans histories sera correctement connecté
   resources :shops, only: [:index, :show]
 
-  get "dashboard", to: "pages#dashboard", as: :dashboard
+  # get "dashboard", to: "pages#dashboard", as: :dashboard
   get "score", to: "pages#score"
   # resources
   # Defines the root path route ("/")

@@ -288,6 +288,13 @@ shop_main_verte = Shop.find_by(name: "LA MAIN VERTE")
 shop_miyam = Shop.find_by(name: "MIYAM")
 shop_saisonniers = Shop.find_by(name: "LES SAISONNIERS")
 
+ProductAlternative.all.each do |product|
+  ShopAlternative.create!(
+    product_alternative: product,
+    shop: Shop.all.sample
+  )
+end
+
 ShopAlternative.create!(
   product_alternative: patate_douce,
   shop: shop_main_verte
