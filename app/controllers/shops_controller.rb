@@ -33,11 +33,13 @@ class ShopsController < ApplicationController
   end
 
   def itinerary
+
     # TODO: venir find l'history quand tout sera correctement connecté
     @shop = Shop.find(params[:id])
     @history = History.find(params[:history_id])
     @history.update(shop: @shop)
     history_loc = [@history.lng, @history.lat]
+
     @options = {
       # [lng, lat]
       center: history_loc,
@@ -51,7 +53,8 @@ class ShopsController < ApplicationController
       },
       markers: [
         history_loc,
-        [@shop.longitude, @shop.latitude]
+        [@shop.longitude, @shop.latitude],
+
       ]
     }
   end
@@ -67,11 +70,5 @@ class ShopsController < ApplicationController
       end
     end
     false
-  end
-
-  private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_shop
-    @shop = Shop.find(params[:id])
   end
 end

@@ -14,6 +14,8 @@ module ApplicationHelper
       map_zoom_value: options.fetch(:zoom, 15),
       map_markers_value: options.fetch(:markers, []),
       map_token_value: options.fetch(:token, Mapbox.access_token),
+      # map_style_value:"prout",
+      map_style_value: ApplicationController.new.render_to_string(partial: "shops/marker", formats: :html),
     }
     if options[:path]
       opt.merge!({

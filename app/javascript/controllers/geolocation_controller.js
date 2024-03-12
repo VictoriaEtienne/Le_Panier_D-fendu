@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["latInput", "lngInput"]
 
   connect() {
-    console.log('coucou c moi')
     if (this.hasLatInputTarget && this.hasLngInputTarget) {
       this.#setInputValues()
     }
