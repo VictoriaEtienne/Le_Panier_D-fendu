@@ -2,8 +2,6 @@
   <%= image_tag "la_main_verte.jpg", alt: "Shop Image", class: "img-fluid"%>
   <div class="row g-0">
     <div class="col-md-4">
-
-
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -23,7 +21,7 @@
           </ul>
         </div>
       </div>
+      <%= link_to "Itinéraire", itinerary_history_shop_path(@history_id, @shop), class: "btn btn-sm custom-btn-shop btn-block w-100" %>
     </div>
   </div>
-      <%= link_to "Itinéraire", itinerary_history_shop_path(@history_id, @shop), class: "btn btn-sm custom-btn-shop btn-block w-100" %>
 </div>
