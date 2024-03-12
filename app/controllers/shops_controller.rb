@@ -29,8 +29,7 @@ class ShopsController < ApplicationController
     # TODO: venir find l'history quand tout sera correctement connecté
     @shop = Shop.find(params[:id])
     @history_id = session[:last_history_id] || History.last.id
-    @is_shop_open = shop_open_now?(@shop.opening_hours)
-  end
+end
 
   def itinerary
 
@@ -57,18 +56,5 @@ class ShopsController < ApplicationController
 
       ]
     }
-  end
-
-  # Method to check if the shop is open
-  def shop_open_now?(opening_hours)
-    # current_time = Time.now
-    # opening_hours.each do |day, hours|
-    #   if hours.present? && hours["open"].present? && hours["close"].present?
-    #     open_time = Time.parse(hours["open"])
-    #     close_time = Time.parse(hours["close"])
-    #     return true if current_time >= open_time && current_time <= close_time
-    #   end
-    # end
-    false
   end
 end
