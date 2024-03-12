@@ -1,6 +1,25 @@
-.shop-block {
-  background-color: black;
-  padding: 5px;
-  border-radius: 5px;
-  margin-bottom: 5px;
+.container-shop {
+  background-color: #212121;
+  padding: 10px;
+  position: absolute;
+}
+
+.card-body {
+  height: 424px;
+}
+
+.card-title-shop {
+  text-align: center;
+  padding: 10px;
+}
+
+.card-time {
+  margin-top: 45px;
+  line-height: 29px;
+}
+
+.img-fluid {
+  border-radius: 20px;
+  width: 355px;
+  height: 245px;
 }

@@ -1,38 +1,29 @@
-  <!-- Image -->
-<img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=2304&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid rounded-start" alt="Shop Image">
-
-<div class="container-show">
+<div class="container-shop">
+  <%= image_tag "la_main_verte.jpg", alt: "Shop Image", class: "img-fluid"%>
   <div class="row g-0">
     <div class="col-md-4">
 
 
     </div>
     <div class="col-md-8">
-      <!-- Contenu de la carte -->
       <div class="card-body">
-        <h5 class="card-title-quicksand text-white" style="font-family: 'Roboto', sans-serif;"><%= @shop.name %></h5>
-        <p class="card-text card-text-roboto text-white"><%= @shop.description %></p>
-        <p class="card-text card-text-roboto text-white">Adresse : <%= @shop.address %></p>
-        <span class="card-text text-white"><i class="fa-solid fa-clock"></i> Horaires d'ouverture :</span><br>
-        <ul class="list-unstyled text-white">
-          <li><small><strong>Lundi :</strong></small> <small><%= @shop.opening_hours["lundi"] %></small></li>
-          <li><small><strong>Mardi :</strong></small> <small><%= @shop.opening_hours["mardi"] %></small></li>
-          <li><small><strong>Mercredi :</strong></small> <small><%= @shop.opening_hours["mercredi"] %></small></li>
-          <li><small><strong>Jeudi :</strong></small> <small><%= @shop.opening_hours["jeudi"] %></small></li>
-          <li><small><strong>Vendredi :</strong></small> <small><%= @shop.opening_hours["vendredi"] %></small></li>
-          <li><small><strong>Samedi :</strong></small> <small><%= @shop.opening_hours["samedi"] %></small></li>
-          <li><small><strong>Dimanche :</strong></small> <small><%= @shop.opening_hours["dimanche"] %></small></li>
-        </ul>
+        <h5 class="card-title-shop text-white" style="font-family: 'Roboto', sans-serif;"><%= @shop.name %></h5>
+        <p class="card-text card-text-quicksand text-white"><%= @shop.description %></p>
+        <p class="card-text card-text-quicksand text-white">Adresse : <%= @shop.address %></p>
+        <div class="card-time">
+          <span class="card-text text-white"><i class="fa-solid fa-clock"></i> Horaires d'ouverture :</span><br>
+          <ul class="list-unstyled text-white">
+            <li><small><strong>Lundi :</strong></small> <small><%= @shop.opening_hours["lundi"] %></small></li>
+            <li><small><strong>Mardi :</strong></small> <small><%= @shop.opening_hours["mardi"] %></small></li>
+            <li><small><strong>Mercredi :</strong></small> <small><%= @shop.opening_hours["mercredi"] %></small></li>
+            <li><small><strong>Jeudi :</strong></small> <small><%= @shop.opening_hours["jeudi"] %></small></li>
+            <li><small><strong>Vendredi :</strong></small> <small><%= @shop.opening_hours["vendredi"] %></small></li>
+            <li><small><strong>Samedi :</strong></small> <small><%= @shop.opening_hours["samedi"] %></small></li>
+            <li><small><strong>Dimanche :</strong></small> <small><%= @shop.opening_hours["dimanche"] %></small></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- Bouton en bas de la page -->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 text-center">
-      <%= link_to "Itinéraire", itinerary_history_shop_path(@history_id, @shop), class: "btn btn-sm custom-btn-shop btn-block" %>
-    </div>
-  </div>
+      <%= link_to "Itinéraire", itinerary_history_shop_path(@history_id, @shop), class: "btn btn-sm custom-btn-shop btn-block w-100" %>
 </div>
