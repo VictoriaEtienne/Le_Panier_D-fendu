@@ -1,5 +1,7 @@
 <div class="shop-block black-bg">
-  <h2 class="text-white"><%= shop.name %></h2>
-  <p class="text-white"><%= shop.address %></p>
-   <%= link_to "voir plus", shop_path(shop), class: "btn btn-sm custom-btn-shop" %>
+  <div class="inner-content">
+    <h2 class="card-title-shop text-white" style="font-family: 'Roboto', sans-serif;"><%= shop.name %></h2>
+    <p class="text-white"><%= shop.address %></p>
+    <%= link_to "voir plus", shop_path(shop), class: "btn btn-sm custom-btn-shop" %>
+  </div>
 </div>
