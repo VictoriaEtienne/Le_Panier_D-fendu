@@ -8,7 +8,7 @@
     <% end %>
     <%= link_to "/histories/new", class: "navbar-icon-button", style: "text-decoration: none" do %>
       <div class="image-container m-0">
-        <%= image_tag image_path(action_name == "new" && controller_name == "histories" ? "icon_button_green_two.png" : "icon_button_two.png"), width: 40, height: 40 %>
+        <%= image_tag image_path(action_name == "new" && controller_name == "histories" ? "icon_button_three_green.png" : "icon_button_three.png"), width: 40, height: 40 %>
         <span class="<%= 'text-vert' if action_name == "new" && controller_name == "histories"%>">Scan</span>
       </div>
     <% end %>
