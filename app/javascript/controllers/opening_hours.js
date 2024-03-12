@@ -3,7 +3,7 @@ function isShopOpen(openingHours) {
   // Récupération de la date et de l'heure actuelles
   const now = new Date();
   // Récupération du jour actuel de la semaine au format long (par exemple, "Monday", "Tuesday", etc.)
-  const currentDay = now.toLocaleDateString('en-US', { weekday: 'long' });
+  const currentDay = now.toLocaleDateString('fr-FR', { weekday: 'long' });
   // Calcul de l'heure actuelle en minutes (heure * 100 + minutes)
   const currentTime = now.getHours() * 100 + now.getMinutes();
 

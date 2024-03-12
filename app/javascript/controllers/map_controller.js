@@ -11,13 +11,15 @@ export default class extends Controller {
     path: Boolean,
     pathOptions: Object,
     pathCoordinates: Array,
+    style: String,
   };
 
   connect() {
+    console.log(this.styleValue);
     mapboxgl.accessToken = this.tokenValue;
     let mapOptions = {
       container: this.element, // l'élément container
-      style: 'mapbox://styles/mapbox/streets-v11', // style de la carte
+      style: 'mapbox://styles/mapbox/dark-v11', // style de la carte
       zoom: this.zoomValue, // zoom de la carte
     }
     if (this.centerValue && this.centerValue.length > 0) {
@@ -50,7 +52,7 @@ export default class extends Controller {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
       const customMarker = document.createElement("div")
-      customMarker.innerHTML = marker.marker_html
+      customMarker.innerHTML = this.styleValue
       new mapboxgl.Marker(customMarker).setLngLat(marker).setPopup(popup).addTo(this.map);
     });
   }
