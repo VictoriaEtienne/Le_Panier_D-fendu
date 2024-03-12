@@ -6,6 +6,14 @@ class PagesController < ApplicationController
     @shops = Shop.all
   end
 
+  def score
+    if params[:history] && params[:shop]
+      history = History.find(params[:history])
+      history.shop = Shop.find(params[:shop])
+      history.save
+    end
+  end
+
   def dashboard
     @user = current_user
     @total_score = @user.total_score

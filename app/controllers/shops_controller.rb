@@ -5,7 +5,7 @@ class ShopsController < ApplicationController
     # - remplacer Shop.all par une recherche en fonction du product alternative sélectionné
     @product_alternative = ProductAlternative.find(params[:product_alternative_id])
     @history = History.find_by(user: current_user, scanned_product_alternative: @product_alternative)
-    @history.update!(product_alternative: ProductAlternative.find(params[:product_alternative_id]))
+    # @history.update!(product_alternative: ProductAlternative.find(params[:product_alternative_id]))
     @shops = @product_alternative.shops
     @markers = @shops.geocoded.map do |shop|
       {
@@ -58,14 +58,14 @@ class ShopsController < ApplicationController
 
   # Method to check if the shop is open
   def shop_open_now?(opening_hours)
-    current_time = Time.now
-    opening_hours.each do |day, hours|
-      if hours.present? && hours["open"].present? && hours["close"].present?
-        open_time = Time.parse(hours["open"])
-        close_time = Time.parse(hours["close"])
-        return true if current_time >= open_time && current_time <= close_time
-      end
-    end
+    # current_time = Time.now
+    # opening_hours.each do |day, hours|
+    #   if hours.present? && hours["open"].present? && hours["close"].present?
+    #     open_time = Time.parse(hours["open"])
+    #     close_time = Time.parse(hours["close"])
+    #     return true if current_time >= open_time && current_time <= close_time
+    #   end
+    # end
     false
   end
 
