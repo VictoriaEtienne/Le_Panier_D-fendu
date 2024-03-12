@@ -1,10 +1,5 @@
-<div class="shop-block">
+<div class="shop-block black-bg">
   <h2 class="text-white"><%= shop.name %></h2>
   <p class="text-white"><%= shop.address %></p>
-  <% if @is_shop_open %>
-            <span class="badge bg-success">Actuellement ouvert</span>
-          <% else %>
-            <span class="badge bg-danger">Actuellement fermé</span>
-          <% end %><br>
    <%= link_to "voir plus", shop_path(shop), class: "btn btn-sm custom-btn-shop" %>
 </div>
