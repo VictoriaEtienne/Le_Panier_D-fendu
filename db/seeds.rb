@@ -295,6 +295,16 @@ ProductAlternative.all.each do |product|
   )
 end
 
+Shop.all.each do |shop|
+  product_alternative = ProductAlternative.all.sample
+  unless ShopAlternative.find_by(product_alternative: product_alternative, shop: shop)
+    ShopAlternative.create!(
+      product_alternative: ProductAlternative.all.sample,
+      shop: shop
+    )
+  end
+end
+
 ShopAlternative.create!(
   product_alternative: patate_douce,
   shop: shop_main_verte
