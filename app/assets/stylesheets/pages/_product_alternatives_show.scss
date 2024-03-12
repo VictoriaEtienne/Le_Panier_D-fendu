@@ -11,7 +11,8 @@
 }
 
 .product-alternative {
-  width : 60%;
+  width : 85%;
+  height: 17vh;
 }
 
 .product-alternative-details {
@@ -26,6 +27,7 @@
 .product-container {
   position: relative;
   width: 100%;
+  flex: 100%;
 }
 
 .product-alternative img {
@@ -64,7 +66,7 @@
 
 .card-product {
   height: 140px;
-  background-color: #3E413D;
+  background-image: url('carotte.jpg');
   color: white;
   font-family: "Quicksand", "sans-serif";
   display: flex;
@@ -91,6 +93,7 @@
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  background-image: cover;
 }
 
 .card-product .card-product-infos {
@@ -138,15 +141,88 @@
 
 .nav-tabs {
   background-color: #3E413D;
+  --bs-nav-tabs-border-color: #3E413D;
 }
 
 .nav-show {
   justify-content: space-evenly;
-  padding: 2px;
-  border-radius: 50px;
   background-color: #3E413D;
 }
 
 .show-elements {
   padding-left: 0px!important;
+}
+
+
+.accordion-item:first-of-type {
+  border-top-left-radius: 1rem !important;
+  border-top-right-radius: 1rem !important;
+  h2 {
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
+  }
+
+}
+
+.accordion-item:first-of-type h2 {
+  button {
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
+  }
+}
+
+.accordion-item:last-of-type {
+  border-bottom-left-radius: 1rem !important;
+  border-bottom-right-radius: 1rem !important;
+  h2 {
+    border-bottom-left-radius: 1rem !important;
+    border-bottom-right-radius: 1rem !important;
+  }
+
+}
+
+.accordion-item:last-of-type h2 {
+  button {
+    border-bottom-left-radius: 1rem !important;
+    border-bottom-right-radius: 1rem !important;
+  }
+}
+
+.product-container {
+  background-image: url('carotte.jpg');
+  background-size: cover;
+}
+
+#alternative-button {
+  position: fixed;
+  bottom: 150px;
+  width: 82%;
+  height: 55px;
+  margin-left: 3px;
+  border-color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold; /* Mise en gras */
+  font-size: 20px;
+}
+
+#shop-button {
+  border-color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold; /* Mise en gras */
+  font-size: 20px;
+  height: 55px;
+  color: white;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.linear-gradient {
+  opacity: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+}
+
+.header h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: light;
+  font-size: 30px;
+  color: white;
 }
