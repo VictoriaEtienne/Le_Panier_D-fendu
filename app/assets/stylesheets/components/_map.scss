@@ -1,8 +1,41 @@
 .mapboxgl-popup {
-  max-width: 200px;
+  max-width: 150px;
 }
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Quicksand", sans-serif;
+  color: black;
+}
+
+.img-pop {
+  max-width: 130px;
+  border-radius: 5px;
+}
+
+.text-pop {
+  margin-top: 10px;
+  line-height: 17px;
+}
+
+.shop-status {
+  position: relative;
+  font-weight: bold;
+}
+
+.shop-status::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.open::before {
+  background-color: green;
+}
+
+.closed::before {
+  background-color: red;
 }
