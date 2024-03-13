@@ -28,6 +28,7 @@ class ShopsController < ApplicationController
   def show
     # TODO: venir find l'history quand tout sera correctement connecté
     @shop = Shop.find(params[:id])
+    @opening_hours = eval(@shop.opening_hours)
     @history_id = session[:last_history_id] || History.last.id
   end
 
