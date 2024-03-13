@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :product_alternatives, only: :show do
+    get :alter_show
     collection do
       get :search
     end
