@@ -198,7 +198,7 @@ pesticides_mapping = {
 custom_product_1 = Product.new(name: "Carotte")
 carotte = ProductAlternative.create!(
   product: custom_product_1,
-  name: "Carotte Franprix",
+  name: "Carotte",
   eco_score: worst_product.eco_score,
   environment: worst_product.environment,
   health: worst_product.health.merge(
@@ -211,7 +211,7 @@ carotte = ProductAlternative.create!(
 
 ProductAlternative.create!(
   product: custom_product_1,
-  name: "Carotte La Main Verte",
+  name: "Carotte",
   eco_score: best_product.eco_score,
   environment: best_product.environment,
   health: best_product.health.merge(
@@ -230,7 +230,7 @@ best_product = patate_douce_product_alternatives.sort_by(&:eco_score).first
 custom_product_2 = Product.new(name: "Patate douce")
 ProductAlternative.create!(
   product: custom_product_2,
-  name: "Patate douce Franprix",
+  name: "Patate douce",
   eco_score: worst_product.eco_score,
   environment: worst_product.environment,
   health: worst_product.health.merge(
@@ -242,7 +242,7 @@ ProductAlternative.create!(
 
 patate_douce = ProductAlternative.create!(
   product: custom_product_2,
-  name: "Patate douce La Main Verte",
+  name: "Patate douce",
   eco_score: best_product.eco_score,
   environment: best_product.environment,
   health: best_product.health.merge(
@@ -261,7 +261,7 @@ best_product = kiwi_product_alternatives.sort_by(&:eco_score).first
 custom_product_3 = Product.new(name: "Kiwi")
 kiwi_bad = ProductAlternative.create!(
   product: custom_product_3,
-  name: "Kiwi Franprix",
+  name: "Kiwi",
   eco_score: worst_product.eco_score,
   environment: worst_product.environment,
   health: worst_product.health.merge(
@@ -273,7 +273,7 @@ kiwi_bad = ProductAlternative.create!(
 
 kiwi = ProductAlternative.create!(
   product: custom_product_3,
-  name: "Kiwi La Main Verte",
+  name: "Kiwi",
   eco_score: best_product.eco_score,
   environment: best_product.environment,
   health: best_product.health.merge(
