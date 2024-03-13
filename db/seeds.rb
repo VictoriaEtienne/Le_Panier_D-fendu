@@ -81,7 +81,7 @@ end
 results = JSON.parse(content)
 
 results["circuit_court"]["circuit_court"].each do |shop_data|
-  p shop_data
+  p shop_data["magasin"]["nom"]
   Shop.create!(
     name: shop_data["magasin"]["nom"],
     description: shop_data["magasin"]["type"],
@@ -98,7 +98,6 @@ counter = 0
 
 puts "Creating products and products alternatives with CSV (this might take a while)..."
 CSV.foreach(CSV_PRODUCTS, headers: true, header_converters: :symbol) do |row|
-  p row
   counter += 1
 
   product = Product.find_or_create_by(name: row[:code_saison])
@@ -189,6 +188,20 @@ pesticides_effects = {
 pesticides_mapping = {
   "Carotte Franprix" => ["Pesticide1", "Pesticide3", "Pesticide4", "Pesticide5", "Pesticide6"],
   "Carotte La Main Verte" => ["Pesticide10", "Pesticide11"],
+  # "Carotte La Petite Cagette" => ["Pesticide10", "Pesticide11"],
+  # "Carotte La Récolte" => ["Pesticide10", "Pesticide11"],
+  # "Carotte Au Bout du Champ" => ["Pesticide10", "Pesticide11"],
+  # "Carotte Le Pari Local" => ["Pesticide10", "Pesticide11"],
+  # "Carotte Le Producteur Local" => ["Pesticide10", "Pesticide11"],
+  # "Carotte Les 400 Coop" => ["Pesticide10", "Pesticide11"],
+  # "Carotte La Source" => ["Pesticide10", "Pesticide11"],
+  # "Carotte La Cale" => ["Pesticide10", "Pesticide11"],
+  # "Carotte La Coopérative De La Goutte d'Or" => ["Pesticide10", "Pesticide11"],
+  # "Carotte La Coopérative La Louve" => ["Pesticide10", "Pesticide11"],
+  # "Carotte Altervojo" => ["Pesticide10", "Pesticide11"],
+  # "Carotte Kelbongoo" => ["Pesticide10", "Pesticide11"],
+  # "Carotte Gramme" => ["Pesticide10", "Pesticide11"],
+  # "Carotte Marché Sur L'Eau" => ["Pesticide10", "Pesticide11"],
   "Patate douce Franprix" => ["Pesticide1", "Pesticide2", "Pesticide3"],
   "Patate douce La Main Verte" => [],
   "Kiwi Franprix" => ["Pesticide1", "Pesticide3", "Pesticide7", "Pesticide8", "Pesticide9"],
@@ -208,6 +221,176 @@ carotte = ProductAlternative.create!(
   ),
   bar_code: "00000017"
 )
+
+#START
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte La Petite Cagette",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte La Petite Cagette"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456781"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte La Récolte",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte La Récolte"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456712"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte Au Bout du Champ",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte Au Bout du Champ"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456123"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte Le Pari Local",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte Le Pari Local"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123451234"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte Le Producteur Local",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte Le Producteur Local"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456721"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Les 400 Coop",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte Les 400 Coop"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456722"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte La Source",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte La Source"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456723"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte La Cale",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte La Cale"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456724"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte La Coopérative De La Goutte d'Or",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte La Coopérative De La Goutte d'Or"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456725"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte La Coopérative La Louve",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte La Coopérative La Louve"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456726"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte Altervojo",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte Altervojo"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456701"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte Kelbongoo",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte Kelbongoo"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456702"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte Gramme",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte Gramme"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456703"
+# )
+
+# ProductAlternative.create!(
+#   product: custom_product_1,
+#   name: "Carotte Marché Sur L'Eau",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Carotte Gramme"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "123456704"
+# )
+# #END
 
 ProductAlternative.create!(
   product: custom_product_1,
@@ -288,6 +471,21 @@ puts "Custom products created"
 shop_main_verte = Shop.find_by(name: "LA MAIN VERTE")
 shop_miyam = Shop.find_by(name: "MIYAM")
 shop_saisonniers = Shop.find_by(name: "LES SAISONNIERS")
+#start
+shop_petite_cagette = Shop.find_by(name: "LA PETITE CAGETTE")
+shop_recolte = Shop.find_by(name: "LA RÉCOLTE")
+shop_pari_local = Shop.find_by(name: "LE PARI LOCAL")
+shop_producteur_local = Shop.find_by(name: "LE PRODUCTEUR LOCAL")
+shop_400_coop = Shop.find_by(name: "LES 400 COOP")
+shop_source = Shop.find_by(name: "LA SOURCE")
+shop_cale = Shop.find_by(name: "LA CALE")
+shop_goutte_or = Shop.find_by(name: "COOPÉRATIVE DE LA GOUTTE D’OR")
+shop_louve = Shop.find_by(name: "COOPÉRATIVE LA LOUVE")
+shop_altervojo = Shop.find_by(name: "ALTERVOJO")
+shop_kelbongoo = Shop.find_by(name: "KELBONGOO")
+shop_gramme = Shop.find_by(name: "GRAMME")
+shop_marche_eau = Shop.find_by(name: "MARCHÉ SUR L’EAU")
+#end
 
 ProductAlternative.all.each do |product|
   ShopAlternative.create!(
@@ -324,4 +522,75 @@ ShopAlternative.create!(
 ShopAlternative.create!(
   product_alternative: carotte,
   shop: shop_saisonniers
+)
+
+#start
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_petite_cagette
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_recolte
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_pari_local
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_producteur_local
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_400_coop
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_source
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_source
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_cale
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_goutte_or
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_louve
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_altervojo
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_kelbongoo
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_gramme
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte,
+  shop: shop_marche_eau
 )
