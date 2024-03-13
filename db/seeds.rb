@@ -81,7 +81,7 @@ end
 results = JSON.parse(content)
 
 results["circuit_court"]["circuit_court"].each do |shop_data|
-  p shop_data
+  p shop_data["magasin"]["nom"]
   Shop.create!(
     name: shop_data["magasin"]["nom"],
     description: shop_data["magasin"]["type"],
@@ -98,7 +98,6 @@ counter = 0
 
 puts "Creating products and products alternatives with CSV (this might take a while)..."
 CSV.foreach(CSV_PRODUCTS, headers: true, header_converters: :symbol) do |row|
-  p row
   counter += 1
 
   product = Product.find_or_create_by(name: row[:code_saison])
