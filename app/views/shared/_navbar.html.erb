@@ -3,7 +3,7 @@
     <%= link_to histories_path, class: "nav-menu", style: "text-decoration: none" do %>
       <div class="image-container">
         <%= image_tag image_path(action_name == "index" && controller_name == "histories" ? "logo.png" : "logo_white.png"), width: 40, height: 40 %>
-        <span>Historique</span>
+        <span class="<%= 'text-orange' if action_name == "index" && controller_name == "histories" %>">Historique</span>
       </div>
     <% end %>
     <%= link_to "/histories/new", class: "navbar-icon-button", style: "text-decoration: none" do %>
