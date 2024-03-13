@@ -1,31 +1,33 @@
 <div class="container-histories d-flex flex-column bgblack px-3 pt-3 pb-5">
   <%= render 'shared/topbar' %>
 
-  <% if @histories.empty? %>
-    <h3 class="text-white">Vous n'avez rien scanné</h3>
-  <% else %>
-    <div class="row pt-5 pb-4">
-      <% @histories.where.not(shop_id: nil).each do |history| %>
-        <%= link_to product_alternative_path(history.scanned_product_alternative), class: "histories bgblack d-grid gap-2 col-6 mx-auto my-3" do %>
-          <div class="product-container bg-gray-background rounded-large px-4 py-3 border border-warning">
-            <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 20%", class: "picto-icon"%>
-            <h3 class="text-center text-white"><%= history.scanned_product_alternative&.product.name %></h3>
-            <p class="text-center mb-0 text-white"><%= history.scanned_product_alternative&.shops.first.nil? ? 'Franprix' : history.scanned_product_alternative&.shops.first.name %></p>
-              <%# <%= link_to "", product_alternatives#show %>
-          </div>
-        <% end %>
-        <% alternatives_products = history.shop.product_alternatives.where(product: history.scanned_product_alternative.product) %>
-        <% alternatives_products.each do |alternative_product| %>
-          <%= link_to product_alternative_alter_show_path(alternative_product, history_id: history.id), class: "histories bgblack d-grid gap-2 col-6 mx-auto my-3" do %>
-            <div class="product-container bg-gray-background rounded-large px-4 py-3 border border-success">
-              <%= image_tag "pictos/picto_a.svg", alt: "Ecoscore", style: "width: 20%", class: "picto-icon"%>
-              <h3 class="text-center text-white"><%= alternative_product&.name %></h3>
-              <p class="text-center mb-0 text-white"><%= history.shop&.name %></p>
+<div class="row pt-5 pb-4">
+  <div class="col-md-12">
+    <% if @histories.empty? %>
+      <h3 class="text-white text-center">Vous n'avez rien scanné</h3>
+    <% else %>
+        <% @histories.where.not(shop_id: nil).each do |history| %>
+          <%= link_to product_alternative_path(history.scanned_product_alternative), class: "histories bgblack d-grid gap-2 col-6 mx-auto my-3" do %>
+            <div class="product-container bg-gray-background rounded-large px-4 py-3 border border-warning">
+              <%= image_tag "pictos/picto_e.svg", alt: "Ecoscore", style: "width: 20%", class: "picto-icon"%>
+              <h3 class="text-center text-white"><%= history.scanned_product_alternative&.product.name %></h3>
+              <p class="text-center mb-0 text-white"><%= history.scanned_product_alternative&.shops.first.nil? ? 'Franprix' : history.scanned_product_alternative&.shops.first.name %></p>
                 <%# <%= link_to "", product_alternatives#show %>
             </div>
           <% end %>
+          <% alternatives_products = history.shop.product_alternatives.where(product: history.scanned_product_alternative.product) %>
+          <% alternatives_products.each do |alternative_product| %>
+            <%= link_to product_alternative_alter_show_path(alternative_product, history_id: history.id), class: "histories bgblack d-grid gap-2 col-6 mx-auto my-3" do %>
+              <div class="product-container bg-gray-background rounded-large px-4 py-3 border border-success">
+                <%= image_tag "pictos/picto_a.svg", alt: "Ecoscore", style: "width: 20%", class: "picto-icon"%>
+                <h3 class="text-center text-white"><%= alternative_product&.name %></h3>
+                <p class="text-center mb-0 text-white"><%= history.shop&.name %></p>
+                  <%# <%= link_to "", product_alternatives#show %>
+              </div>
+            <% end %>
         <% end %>
       <% end %>
-    </div>
   <% end %>
+  </div>
+</div>
 </div>
