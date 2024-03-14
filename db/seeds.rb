@@ -19,7 +19,7 @@ Shop.destroy_all
 puts "Records destroyed"
 #NEW SEED
 
-User.create!(
+user = User.create!(
   email: "test@test.com",
   password: "azerty"
 )
@@ -466,6 +466,107 @@ kiwi = ProductAlternative.create!(
   bar_code: "00000028"
 )
 
+#start
+# product_element = "Chou Romanesco"
+# chou_romanesco_product_alternatives = Product.where("name ILIKE ?", "%#{product_element}%").map(&:product_alternatives).flatten
+# worst_product = chou_romanesco_product_alternatives.sort_by(&:eco_score).last
+# best_product = chou_romanesco_product_alternatives.sort_by(&:eco_score).first
+# # Product.where("name ILIKE ?", "%chou romanesco%").map do |product|
+
+# custom_product_4 = Product.new(name: "Chou Romanesco")
+# chou_romanesco_bad = ProductAlternative.create!(
+#   product: custom_product_4,
+#   name: "Chou Romanesco",
+#   eco_score: worst_product.eco_score,
+#   environment: worst_product.environment,
+#   health: worst_product.health.merge(
+#     pesticides: pesticides_mapping["Chou Romanesco Franprix"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Chou Romanesco Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "01234567"
+# )
+
+# chou_romanesco = ProductAlternative.create!(
+#   product: custom_product_4,
+#   name: "Chou Romanesco",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Chou Romanesco La Main Verte"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Chou Romanesco La Main Verte"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "00000028"
+# )
+
+# product_element = "Pomme"
+# pomme_product_alternatives = Product.where("name ILIKE ?", "%#{product_element}%").map(&:product_alternatives).flatten
+# worst_product = pomme_product_alternatives.sort_by(&:eco_score).last
+# best_product = pomme_product_alternatives.sort_by(&:eco_score).first
+# # Product.where("name ILIKE ?", "%pomme%").map do |product|
+
+# custom_product_5 = Product.new(name: "Pomme")
+# pomme_bad = ProductAlternative.create!(
+#   product: custom_product_5,
+#   name: "Pomme",
+#   eco_score: worst_product.eco_score,
+#   environment: worst_product.environment,
+#   health: worst_product.health.merge(
+#     pesticides: pesticides_mapping["Pomme Leclerc"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Pomme"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "01234567"
+# )
+
+# pomme = ProductAlternative.create!(
+#   product: custom_product_5,
+#   name: "Pomme",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Pomme La Main Verte"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Pomme Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "00000028"
+# )
+
+# product_element = "Radis"
+# radis_product_alternatives = Product.where("name ILIKE ?", "%#{product_element}%").map(&:product_alternatives).flatten
+# worst_product = radis_product_alternatives.sort_by(&:eco_score).last
+# best_product = radis_product_alternatives.sort_by(&:eco_score).first
+# # Product.where("name ILIKE ?", "%radis%").map do |product|
+
+# custom_product_6 = Product.new(name: "Radis")
+# radis_bad = ProductAlternative.create!(
+#   product: custom_product_6,
+#   name: "Radis",
+#   eco_score: worst_product.eco_score,
+#   environment: worst_product.environment,
+#   health: worst_product.health.merge(
+#     pesticides: pesticides_mapping["Radis Leclerc"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Radis"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "01234567"
+# )
+
+# radis = ProductAlternative.create!(
+#   product: custom_product_6,
+#   name: "Radis",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Radis La Main Verte"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Radis Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "00000028"
+# )
+
+# history_entry = History.create!(
+#   action: "add_product",
+#   product: custom_product_5,
+#   user_id: 29
+# )
+#end
+
 puts "Custom products created"
 
 shop_main_verte = Shop.find_by(name: "LA MAIN VERTE")
@@ -484,7 +585,6 @@ shop_louve = Shop.find_by(name: "COOPÉRATIVE LA LOUVE")
 shop_altervojo = Shop.find_by(name: "ALTERVOJO")
 shop_kelbongoo = Shop.find_by(name: "KELBONGOO")
 shop_gramme = Shop.find_by(name: "GRAMME")
-shop_marche_eau = Shop.find_by(name: "MARCHÉ SUR L’EAU")
 #end
 
 ProductAlternative.all.each do |product|
@@ -589,3 +689,14 @@ ShopAlternative.create!(
   product_alternative: carotte,
   shop: shop_gramme
 )
+
+
+history= History.new(
+  user: user,
+  scanned_product_alternative: ProductAlternative.find_by("name ILIKE ?", "kiwi"),
+  shop: ProductAlternative.find_by("name ILIKE ?", "kiwi").shops.first,
+  lat: 48.8630998,
+  lng: 2.3816098
+)
+
+history.save!
