@@ -82,14 +82,16 @@ results = JSON.parse(content)
 
 results["circuit_court"]["circuit_court"].each do |shop_data|
   p shop_data["magasin"]["nom"]
-  Shop.create!(
+
+  s = Shop.new(
     name: shop_data["magasin"]["nom"],
     description: shop_data["magasin"]["type"],
-    opening_hours: shop_data["magasin"]["horaire"],
+    opening_hours: shop_data["magasin"]["horaire"].to_json,
     address: shop_data.dig("magasin", "adresse").slice("adresse", "cp", "ville").values.join(', '),
     latitude: shop_data["lat"],
     longitude: shop_data["lon"],
   )
+  s.save!
 end
 
 CSV_PRODUCTS = File.join('db', 'seeds', 'agribalyse_synthese_v1.csv')
