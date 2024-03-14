@@ -33,7 +33,6 @@ class ShopsController < ApplicationController
   end
 
   def itinerary
-
     # TODO: venir find l'history quand tout sera correctement connecté
     @shop = Shop.find(params[:id])
     @history = History.find(params[:history_id])

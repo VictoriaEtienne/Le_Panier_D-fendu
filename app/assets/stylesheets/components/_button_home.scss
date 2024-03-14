@@ -14,7 +14,7 @@
 
 .custom-btn-shop {
   background-color: #1DDD50;
-  border-color: white;
+  border-color: none!important;
   color: white;
   font-family: "QuickSand", sans-serif;
   height: 55px;
@@ -31,7 +31,7 @@
 
 .btn-sm {
   background-color: #1DDD50;
-  border-color: white;
+  border-color: none!important;
   color: white;
   font-family: "QuickSand", sans-serif;
   height: 55px;
@@ -48,10 +48,11 @@
 
 .custom-btn-itinerary {
   background-color: #1DDD50;
-  border-color: white;
+  border-color: none!important;
   color: white;
   font-family: "QuickSand", sans-serif;
   height: 55px;
+  left: 15%;
   font-weight: bold;
   font-size: 20px;
   width: 70%;
