@@ -12,10 +12,10 @@ export default class extends Controller {
     pathOptions: Object,
     pathCoordinates: Array,
     style: String,
+    redMarker: String,
   };
 
   connect() {
-    console.log(this.styleValue);
     mapboxgl.accessToken = this.tokenValue;
     let mapOptions = {
       container: this.element, // l'élément container
@@ -49,11 +49,19 @@ export default class extends Controller {
 
   _addMarkers() {
 
+    let i = 1
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
       const customMarker = document.createElement("div")
-      customMarker.innerHTML = this.styleValue
+
+      if (this.redMarkerValue && i <= 1) {
+        customMarker.innerHTML = this.redMarkerValue
+      } else {
+        customMarker.innerHTML = this.styleValue
+      }
+
       new mapboxgl.Marker(customMarker).setLngLat(marker).setPopup(popup).addTo(this.map);
+      i += 1
     });
   }
 
