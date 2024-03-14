@@ -66,13 +66,14 @@
 
 .card-product {
   height: 140px;
-  background-image: url('carotte.jpg');
   color: white;
   font-family: "Quicksand", "sans-serif";
   display: flex;
   align-items: center;
   border-radius: 10px;
   position: relative;
+  background-size: cover;
+  background-repeat: no-repeat ;
 }
 
 .card-product img {
@@ -195,7 +196,6 @@
 }
 
 .product-container {
-  background-image: url('carotte.jpg');
   background-size: cover;
 }
 
