@@ -472,14 +472,14 @@ shop_main_verte = Shop.find_by(name: "LA MAIN VERTE")
 shop_miyam = Shop.find_by(name: "MIYAM")
 shop_saisonniers = Shop.find_by(name: "LES SAISONNIERS")
 #start
-shop_petite_cagette = Shop.find_by(name: "LA PETITE CAGETTE")
-shop_recolte = Shop.find_by(name: "LA RÉCOLTE")
+# shop_petite_cagette = Shop.find_by(name: "LA PETITE CAGETTE")
+shop_recolte = Shop.find_by('name LIKE ?', "%RECOLTE%")
 shop_pari_local = Shop.find_by(name: "LE PARI LOCAL")
 shop_producteur_local = Shop.find_by(name: "LE PRODUCTEUR LOCAL")
 shop_400_coop = Shop.find_by(name: "LES 400 COOP")
-shop_source = Shop.find_by(name: "LA SOURCE")
+shop_source = Shop.find_by('name LIKE ?', "%BERRIE%")
 shop_cale = Shop.find_by(name: "LA CALE")
-shop_goutte_or = Shop.find_by(name: "COOPÉRATIVE DE LA GOUTTE D’OR")
+shop_goutte_or = Shop.find_by('name LIKE ?', "%GOUTTE%")
 shop_louve = Shop.find_by(name: "COOPÉRATIVE LA LOUVE")
 shop_altervojo = Shop.find_by(name: "ALTERVOJO")
 shop_kelbongoo = Shop.find_by(name: "KELBONGOO")
@@ -527,7 +527,7 @@ ShopAlternative.create!(
 #start
 ShopAlternative.create!(
   product_alternative: carotte,
-  shop: shop_petite_cagette
+  shop: shop_main_verte
 )
 
 ShopAlternative.create!(
@@ -588,9 +588,4 @@ ShopAlternative.create!(
 ShopAlternative.create!(
   product_alternative: carotte,
   shop: shop_gramme
-)
-
-ShopAlternative.create!(
-  product_alternative: carotte,
-  shop: shop_marche_eau
 )

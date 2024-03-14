@@ -21,7 +21,8 @@ module ApplicationHelper
       opt.merge!({
         map_path_value: options.fetch(:path, 'line'),
         map_path_coordinates_value: route_data(options[:markers], options[:path]),
-        map_path_options_value: options.fetch(:path_options, {})
+        map_path_options_value: options.fetch(:path_options, {}),
+        map_red_marker_value: ApplicationController.new.render_to_string(partial: "shops/red_marker", formats: :html)
       })
     end
     opt
