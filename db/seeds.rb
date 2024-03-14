@@ -94,6 +94,13 @@ results["circuit_court"]["circuit_court"].each do |shop_data|
   s.save!
 end
 
+Shop.create(
+  name: "Franprix",
+  description: "Supermarché",
+  opening_hours: results["circuit_court"]["circuit_court"].first["magasin"]["horaire"].to_json,
+  address: "65 Rue Servan, 75011 paris",
+)
+
 CSV_PRODUCTS = File.join('db', 'seeds', 'agribalyse_synthese_v1.csv')
 
 counter = 0
@@ -211,7 +218,20 @@ pesticides_mapping = {
 }
 
 custom_product_1 = Product.new(name: "Carotte")
-carotte = ProductAlternative.create!(
+
+main_verte_carotte = ProductAlternative.create!(
+  product: custom_product_1,
+  name: "Carotte",
+  eco_score: best_product.eco_score,
+  environment: best_product.environment,
+  health: best_product.health.merge(
+    pesticides: pesticides_mapping["Carotte La Main Verte"].map { |p| pesticide_associations[p] },
+    pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+  ),
+  bar_code: "123456789"
+)
+
+carotte_franprix = ProductAlternative.create!(
   product: custom_product_1,
   name: "Carotte",
   eco_score: worst_product.eco_score,
@@ -222,6 +242,32 @@ carotte = ProductAlternative.create!(
     pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
   ),
   bar_code: "00000017"
+)
+
+carotte_horrible = ProductAlternative.create!(
+  product: custom_product_1,
+  name: "Carotte",
+  eco_score: worst_product.eco_score,
+  environment: worst_product.environment,
+  health: worst_product.health.merge(
+    pesticides: pesticides_mapping["Carotte Franprix"].map { |p| pesticide_associations[p] },
+    pesticide_icons: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_icons[pesticide_associations[p]] },
+    pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+  ),
+  bar_code: "99999917"
+)
+
+carotte_horrible_two = ProductAlternative.create!(
+  product: custom_product_1,
+  name: "Carotte",
+  eco_score: worst_product.eco_score,
+  environment: worst_product.environment,
+  health: worst_product.health.merge(
+    pesticides: pesticides_mapping["Carotte Franprix"].map { |p| pesticide_associations[p] },
+    pesticide_icons: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_icons[pesticide_associations[p]] },
+    pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+  ),
+  bar_code: "99999917"
 )
 
 #START
@@ -394,18 +440,6 @@ carotte = ProductAlternative.create!(
 # )
 # #END
 
-ProductAlternative.create!(
-  product: custom_product_1,
-  name: "Carotte",
-  eco_score: best_product.eco_score,
-  environment: best_product.environment,
-  health: best_product.health.merge(
-    pesticides: pesticides_mapping["Carotte La Main Verte"].map { |p| pesticide_associations[p] },
-    pesticide_effects: pesticides_mapping["Carotte Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
-  ),
-  bar_code: "123456789"
-)
-
 product_element = "patate douce"
 patate_douce_product_alternatives = Product.where("name ILIKE ?", "%#{product_element}%").map(&:product_alternatives).flatten
 worst_product = patate_douce_product_alternatives.sort_by(&:eco_score).last
@@ -463,7 +497,7 @@ kiwi = ProductAlternative.create!(
   environment: best_product.environment,
   health: best_product.health.merge(
     pesticides: pesticides_mapping["Kiwi La Main Verte"].map { |p| pesticide_associations[p] },
-    pesticide_effects: pesticides_mapping["Kiwi Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+    pesticide_effects: pesticides_mapping["Kiwi La Main Verte"].map { |p| pesticides_effects[pesticide_associations[p]] },
   ),
   bar_code: "00000028"
 )
@@ -587,6 +621,7 @@ shop_louve = Shop.find_by(name: "COOPÉRATIVE LA LOUVE")
 shop_altervojo = Shop.find_by(name: "ALTERVOJO")
 shop_kelbongoo = Shop.find_by(name: "KELBONGOO")
 shop_gramme = Shop.find_by(name: "GRAMME")
+franprix = Shop.find_by(name: "Franprix")
 #end
 # this is where we are going to attach an image on the model
 shop_miyam.photo.attach(
@@ -637,22 +672,22 @@ shop_altervojo.photo.attach(
 )
 shop_altervojo.save!
 
-ProductAlternative.all.each do |product|
-  ShopAlternative.create!(
-    product_alternative: product,
-    shop: Shop.all.sample
-  )
-end
+# ProductAlternative.all.each do |product|
+#   ShopAlternative.create!(
+#     product_alternative: product,
+#     shop: Shop.all.sample
+#   )
+# end
 
-Shop.all.each do |shop|
-  product_alternative = ProductAlternative.all.sample
-  unless ShopAlternative.find_by(product_alternative: product_alternative, shop: shop)
-    ShopAlternative.create!(
-      product_alternative: ProductAlternative.all.sample,
-      shop: shop
-    )
-  end
-end
+# Shop.all.each do |shop|
+#   product_alternative = ProductAlternative.all.sample
+#   unless ShopAlternative.find_by(product_alternative: product_alternative, shop: shop)
+#     ShopAlternative.create!(
+#       product_alternative: ProductAlternative.all.sample,
+#       shop: shop
+#     )
+#   end
+# end
 
 ShopAlternative.create!(
   product_alternative: patate_douce,
@@ -660,91 +695,111 @@ ShopAlternative.create!(
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
+  shop: franprix
+)
+
+ShopAlternative.create!(
+  product_alternative: main_verte_carotte,
   shop: shop_main_verte
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_horrible,
+  shop: shop_goutte_or
+)
+
+ShopAlternative.create!(
+  product_alternative: carotte_horrible_two,
   shop: shop_miyam
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_saisonniers
 )
 
 #start
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_main_verte
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_recolte
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_pari_local
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_producteur_local
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_400_coop
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_source
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_source
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_cale
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_goutte_or
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_louve
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_altervojo
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
+  product_alternative: carotte_franprix,
   shop: shop_kelbongoo
 )
 
 ShopAlternative.create!(
-  product_alternative: carotte,
-  shop: shop_gramme
+  product_alternative: kiwi,
+  shop: shop_main_verte
 )
 
 
 history= History.new(
   user: user,
   scanned_product_alternative: ProductAlternative.find_by("name ILIKE ?", "kiwi"),
-  shop: ProductAlternative.find_by("name ILIKE ?", "kiwi").shops.first,
+  shop: shop_main_verte,
+  lat: 48.8630998,
+  lng: 2.3816098
+)
+
+history.save!
+
+history= History.new(
+  user: user,
+  scanned_product_alternative: ProductAlternative.find_by("name ILIKE ?", "patate douce"),
+  shop: shop_main_verte,
   lat: 48.8630998,
   lng: 2.3816098
 )
