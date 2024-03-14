@@ -487,6 +487,12 @@ shop_kelbongoo = Shop.find_by(name: "KELBONGOO")
 shop_gramme = Shop.find_by(name: "GRAMME")
 shop_marche_eau = Shop.find_by(name: "MARCHÉ SUR L’EAU")
 #end
+# this is where we are going to attach an image on the model
+shop_miyam.photo.attach(
+io: File.open('public/images/Miyam.jpg'),
+filename: 'Miyam.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+)
+shop_miyam.save!
 
 ProductAlternative.all.each do |product|
   ShopAlternative.create!(
