@@ -5,23 +5,23 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title-shop text-white" style="font-family: 'Roboto', sans-serif;"><%= @shop.name %></h5>
+        <h5 class="card-title-shop text-white" style="font-family: 'QuickSand', sans-serif; font-weight: bold;"><%= @shop.name %></h5>
         <p class="card-text card-text-quicksand text-white"><%= @shop.description %></p>
         <p class="card-text card-text-quicksand text-white">Adresse : <%= @shop.address %></p>
         <div class="card-time">
           <span class="card-text text-white"><i class="fa-solid fa-clock"></i> Horaires d'ouverture :</span><br>
           <ul class="list-unstyled text-white">
-            <li><small><strong>Lundi :</strong></small> <small><%= @shop.opening_hours["lundi"] %></small></li>
-            <li><small><strong>Mardi :</strong></small> <small><%= @shop.opening_hours["mardi"] %></small></li>
-            <li><small><strong>Mercredi :</strong></small> <small><%= @shop.opening_hours["mercredi"] %></small></li>
-            <li><small><strong>Jeudi :</strong></small> <small><%= @shop.opening_hours["jeudi"] %></small></li>
-            <li><small><strong>Vendredi :</strong></small> <small><%= @shop.opening_hours["vendredi"] %></small></li>
-            <li><small><strong>Samedi :</strong></small> <small><%= @shop.opening_hours["samedi"] %></small></li>
-            <li><small><strong>Dimanche :</strong></small> <small><%= @shop.opening_hours["dimanche"] %></small></li>
+            <li><small><strong>Lundi :</strong></small> <small><%= @opening_hours["lundi"] %></small></li>
+            <li><small><strong>Mardi :</strong></small> <small><%= @opening_hours["mardi"] %></small></li>
+            <li><small><strong>Mercredi :</strong></small> <small><%= @opening_hours["mercredi"] %></small></li>
+            <li><small><strong>Jeudi :</strong></small> <small><%= @opening_hours["jeudi"] %></small></li>
+            <li><small><strong>Vendredi :</strong></small> <small><%= @opening_hours["vendredi"] %></small></li>
+            <li><small><strong>Samedi :</strong></small> <small><%= @opening_hours["samedi"] %></small></li>
+            <li><small><strong>Dimanche :</strong></small> <small><%= @opening_hours["dimanche"] %></small></li>
           </ul>
         </div>
       </div>
-      <%= link_to "Itinéraire", itinerary_history_shop_path(@history_id, @shop), class: "btn btn-sm custom-btn-shop btn-block w-100" %>
+      <%= link_to "Itinéraire", itinerary_history_shop_path(@history_id, @shop), class: "btn custom-btn-shop btn-block w-100" %>
     </div>
   </div>
 </div>

@@ -81,15 +81,17 @@ end
 results = JSON.parse(content)
 
 results["circuit_court"]["circuit_court"].each do |shop_data|
-  p shop_data
-  Shop.create!(
+  p shop_data["magasin"]["nom"]
+
+  s = Shop.new(
     name: shop_data["magasin"]["nom"],
     description: shop_data["magasin"]["type"],
-    opening_hours: shop_data["magasin"]["horaire"],
+    opening_hours: shop_data["magasin"]["horaire"].to_json,
     address: shop_data.dig("magasin", "adresse").slice("adresse", "cp", "ville").values.join(', '),
     latitude: shop_data["lat"],
     longitude: shop_data["lon"],
   )
+  s.save!
 end
 
 CSV_PRODUCTS = File.join('db', 'seeds', 'agribalyse_synthese_v1.csv')
@@ -98,7 +100,6 @@ counter = 0
 
 puts "Creating products and products alternatives with CSV (this might take a while)..."
 CSV.foreach(CSV_PRODUCTS, headers: true, header_converters: :symbol) do |row|
-  p row
   counter += 1
 
   product = Product.find_or_create_by(name: row[:code_saison])
@@ -212,7 +213,7 @@ pesticides_mapping = {
 custom_product_1 = Product.new(name: "Carotte")
 carotte = ProductAlternative.create!(
   product: custom_product_1,
-  name: "Carotte Franprix",
+  name: "Carotte",
   eco_score: worst_product.eco_score,
   environment: worst_product.environment,
   health: worst_product.health.merge(
@@ -395,7 +396,7 @@ carotte = ProductAlternative.create!(
 
 ProductAlternative.create!(
   product: custom_product_1,
-  name: "Carotte La Main Verte",
+  name: "Carotte",
   eco_score: best_product.eco_score,
   environment: best_product.environment,
   health: best_product.health.merge(
@@ -414,7 +415,7 @@ best_product = patate_douce_product_alternatives.sort_by(&:eco_score).first
 custom_product_2 = Product.new(name: "Patate douce")
 ProductAlternative.create!(
   product: custom_product_2,
-  name: "Patate douce Franprix",
+  name: "Patate douce",
   eco_score: worst_product.eco_score,
   environment: worst_product.environment,
   health: worst_product.health.merge(
@@ -426,7 +427,7 @@ ProductAlternative.create!(
 
 patate_douce = ProductAlternative.create!(
   product: custom_product_2,
-  name: "Patate douce La Main Verte",
+  name: "Patate douce",
   eco_score: best_product.eco_score,
   environment: best_product.environment,
   health: best_product.health.merge(
@@ -445,7 +446,7 @@ best_product = kiwi_product_alternatives.sort_by(&:eco_score).first
 custom_product_3 = Product.new(name: "Kiwi")
 kiwi_bad = ProductAlternative.create!(
   product: custom_product_3,
-  name: "Kiwi Franprix",
+  name: "Kiwi",
   eco_score: worst_product.eco_score,
   environment: worst_product.environment,
   health: worst_product.health.merge(
@@ -457,7 +458,7 @@ kiwi_bad = ProductAlternative.create!(
 
 kiwi = ProductAlternative.create!(
   product: custom_product_3,
-  name: "Kiwi La Main Verte",
+  name: "Kiwi",
   eco_score: best_product.eco_score,
   environment: best_product.environment,
   health: best_product.health.merge(
@@ -473,14 +474,14 @@ shop_main_verte = Shop.find_by(name: "LA MAIN VERTE")
 shop_miyam = Shop.find_by(name: "MIYAM")
 shop_saisonniers = Shop.find_by(name: "LES SAISONNIERS")
 #start
-shop_petite_cagette = Shop.find_by(name: "LA PETITE CAGETTE")
-shop_recolte = Shop.find_by(name: "LA RÉCOLTE")
+# shop_petite_cagette = Shop.find_by(name: "LA PETITE CAGETTE")
+shop_recolte = Shop.find_by('name LIKE ?', "%RECOLTE%")
 shop_pari_local = Shop.find_by(name: "LE PARI LOCAL")
 shop_producteur_local = Shop.find_by(name: "LE PRODUCTEUR LOCAL")
 shop_400_coop = Shop.find_by(name: "LES 400 COOP")
-shop_source = Shop.find_by(name: "LA SOURCE")
+shop_source = Shop.find_by('name LIKE ?', "%BERRIE%")
 shop_cale = Shop.find_by(name: "LA CALE")
-shop_goutte_or = Shop.find_by(name: "COOPÉRATIVE DE LA GOUTTE D’OR")
+shop_goutte_or = Shop.find_by('name LIKE ?', "%GOUTTE%")
 shop_louve = Shop.find_by(name: "COOPÉRATIVE LA LOUVE")
 shop_altervojo = Shop.find_by(name: "ALTERVOJO")
 shop_kelbongoo = Shop.find_by(name: "KELBONGOO")
@@ -534,7 +535,7 @@ ShopAlternative.create!(
 #start
 ShopAlternative.create!(
   product_alternative: carotte,
-  shop: shop_petite_cagette
+  shop: shop_main_verte
 )
 
 ShopAlternative.create!(
@@ -595,9 +596,4 @@ ShopAlternative.create!(
 ShopAlternative.create!(
   product_alternative: carotte,
   shop: shop_gramme
-)
-
-ShopAlternative.create!(
-  product_alternative: carotte,
-  shop: shop_marche_eau
 )

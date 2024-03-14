@@ -2,7 +2,14 @@
   <%= render 'shared/topbar' %>
 
   <% if @histories.empty? %>
-    <h3 class="text-white">Vous n'avez rien scanné</h3>
+    <div class="row justify-content-center align-items-center mt-7" style="height: 80vh;">
+      <div class="col-12">
+        <h3 class="text-white text-center mb-4">Vous n'avez pas scanné de bio fruits ou légumes ! </h3>
+        <div class="text-center mb-5">
+          <%= image_tag "tea.png", alt: "Agriculteur", width: "80%;" %>
+        </div>
+      </div>
+    </div>
   <% else %>
     <div class="row pt-5 pb-4">
       <% @histories.where.not(shop_id: nil).each do |history| %>

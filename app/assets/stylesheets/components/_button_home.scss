@@ -14,9 +14,49 @@
 
 .custom-btn-shop {
   background-color: #1DDD50;
-  border: none!important;
+  border-color: none!important;
   color: white;
-  padding: 8px 16px;
+  font-family: "QuickSand", sans-serif;
+  height: 55px;
+  font-weight: bold;
+  font-size: 20px;
+  width: 70%;
+  padding-top: 10px;
+  border-radius: 20px;
+  text-decoration: none!important;
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.btn-sm {
+  background-color: #1DDD50;
+  border-color: none!important;
+  color: white;
+  font-family: "QuickSand", sans-serif;
+  height: 55px;
+  font-weight: bold;
+  font-size: 15px;
+  width: 70%;
+  padding: 10px;
+  border-radius: 20px;
+  text-decoration: none!important;
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.custom-btn-itinerary {
+  background-color: #1DDD50;
+  border-color: none!important;
+  color: white;
+  font-family: "QuickSand", sans-serif;
+  height: 55px;
+  left: 15%;
+  font-weight: bold;
+  font-size: 20px;
+  width: 70%;
+  padding-top: 10px;
   border-radius: 20px;
   text-decoration: none!important;
   &:focus-visible {
