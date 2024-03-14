@@ -1,5 +1,9 @@
 <div class="inner-content">
-    <%= image_tag "la_main_verte.jpg", alt: "Popup Image", class: "img-pop"%>
+    <% if shop.photo.attached? %>
+      <%= cl_image_tag shop.photo.key, alt: "Popup Image", class: "img-pop"%>
+    <% else %>
+      <%= image_tag "magasin_bio.jpg", alt: "Popup Image", class: "img-pop"%>
+    <% end %>
     <div class="text-pop">
       <h4 class="card-title-roboto"><%= shop.name %></h4>
       <p class="card-text-quicksand"><%= shop.address %></p>
