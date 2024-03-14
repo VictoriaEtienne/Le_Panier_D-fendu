@@ -172,18 +172,18 @@ pesticides_icons = {
   "Bicarbonate" => "fongicide_icon.png"
 }
 pesticides_effects = {
-  "Chlorpyrifos" => "insecticide organophosphoré: perturbations endocriniennes, troubles neurologiques, problèmes respiratoires, irritations cutanées, irritations oculaires, troubles gastro-intestinaux, troubles de la fertilité",
-  "Glyphosate" => "herbicide: possibilité de cancérogénicité (en contact direct ou indirect), irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, allergies (en contact direct ou indirect), perturbations endocriniennes",
-  "Métam-sodium" => "fongicide, herbicide et nématicide: irritations cutanées, irritations oculaires, problèmes respiratoires, troubles neurologiques",
-  "Thiaclopride" => "insecticide néonicotinoïde: irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, troubles neurologiques, troubles de la fertilité",
-  "Linuron" => "herbicide : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, perturbations endocriniennes, troubles de la fertilité",
-  "Pendiméthaline" => "herbicide : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, troubles neurologiques",
-  "Difénoconazole" => "fongicide triazole : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, perturbations endocriniennes, possibles effets sur la fertilité",
-  "Azoxystrobine" => "fongicide strobilurine : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, perturbations endocriniennes, allergies (en contact direct ou indirect)",
-  "Pyriméthanil" => "fongicide anilinopyrimidine : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, allergies, troubles neurologiques",
-  "Cuivre en aspersion" => "fongicide et bactéricide: irritations cutanées, irritations oculaires, problèmes respiratoires ",
-  "Granulés à l'huile d'oignon" => "répulsif, éliciteur, fongicide: allergies",
-  "Bacillus amyloliquefaciens" => "biocontrolant: pas d'effets sur la santé",
+  "Chlorpyrifos" => "Insecticide organophosphoré: perturbations endocriniennes, troubles neurologiques, problèmes respiratoires, irritations cutanées, irritations oculaires, troubles gastro-intestinaux, troubles de la fertilité",
+  "Glyphosate" => "Herbicide: possibilité de cancérogénicité (en contact direct ou indirect), irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, allergies (en contact direct ou indirect), perturbations endocriniennes",
+  "Métam-sodium" => "Fongicide, herbicide et nématicide: irritations cutanées, irritations oculaires, problèmes respiratoires, troubles neurologiques",
+  "Thiaclopride" => "Insecticide néonicotinoïde: irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, troubles neurologiques, troubles de la fertilité",
+  "Linuron" => "Herbicide : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, perturbations endocriniennes, troubles de la fertilité",
+  "Pendiméthaline" => "Herbicide : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, troubles neurologiques",
+  "Difénoconazole" => "Fongicide triazole : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, perturbations endocriniennes, possibles effets sur la fertilité",
+  "Azoxystrobine" => "Fongicide strobilurine : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, perturbations endocriniennes, allergies (en contact direct ou indirect)",
+  "Pyriméthanil" => "Fongicide anilinopyrimidine : irritations cutanées, irritations oculaires, problèmes respiratoires, troubles gastro-intestinaux, allergies, troubles neurologiques",
+  "Cuivre en aspersion" => "Fongicide et bactéricide: irritations cutanées, irritations oculaires, problèmes respiratoires ",
+  "Granulés à l'huile d'oignon" => "Fépulsif, éliciteur, fongicide: allergies",
+  "Bacillus amyloliquefaciens" => "Biocontrolant: pas d'effets sur la santé",
   "Bicarbonate" => "fongicide, herbicide, régulateur du pH du sol, répulsif, désinfectant : allergies, irritations cutanées, irritations oculaires, troubles gastro-intestinaux"
 }
 
