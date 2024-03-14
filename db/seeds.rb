@@ -486,7 +486,6 @@ shop_louve = Shop.find_by(name: "COOPÉRATIVE LA LOUVE")
 shop_altervojo = Shop.find_by(name: "ALTERVOJO")
 shop_kelbongoo = Shop.find_by(name: "KELBONGOO")
 shop_gramme = Shop.find_by(name: "GRAMME")
-shop_marche_eau = Shop.find_by(name: "MARCHÉ SUR L’EAU")
 #end
 # this is where we are going to attach an image on the model
 shop_miyam.photo.attach(
@@ -494,6 +493,48 @@ io: File.open('public/images/Miyam.jpg'),
 filename: 'Miyam.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
 )
 shop_miyam.save!
+
+shop_saisonniers.photo.attach(
+io: File.open('public/images/les_saisonniers.jpg'),
+filename: 'les_saisonniers.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+)
+shop_saisonniers.save!
+
+shop_400_coop.photo.attach(
+io: File.open('public/images/les_400_coop.jpg'),
+filename: 'les_400_coop.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+)
+shop_400_coop.save!
+
+shop_producteur_local.photo.attach(
+io: File.open('public/images/le_producteur_local.jpg'),
+filename: 'le_producteur_local.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+)
+shop_producteur_local.save!
+
+shop_main_verte.photo.attach(
+io: File.open('public/images/la_main_verte.jpg'),
+filename: 'la_main_verte.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+)
+shop_main_verte.save!
+
+shop_kelbongoo.photo.attach(
+io: File.open('public/images/kelbongoo.jpg'),
+filename: 'kelbongoo.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+)
+shop_kelbongoo.save!
+
+shop_louve.photo.attach(
+io: File.open('public/images/cooperative_la_louve.jpg'),
+filename: 'cooperative_la_louve.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+)
+shop_louve.save!
+
+shop_altervojo.photo.attach(
+io: File.open('public/images/altervojo.jpg'),
+filename: 'altervojo.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+)
+shop_altervojo.save!
 
 ProductAlternative.all.each do |product|
   ShopAlternative.create!(

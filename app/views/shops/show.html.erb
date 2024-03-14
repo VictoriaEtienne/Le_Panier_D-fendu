@@ -1,5 +1,9 @@
 <div class="container-shop">
-  <%= image_tag shop.image_path, alt: "Shop Image", class: "img-fluid"%>
+  <% if @shop.photo.attached? %>
+    <%= cl_image_tag @shop.photo.key, alt: "Shop Image", class: "img-fluid"%>
+  <% else %>
+    <%= image_tag "magasin_bio.jpg",alt: "Shop Image", class: "img-fluid"%>
+  <% end %>
   <div class="row g-0">
     <div class="col-md-4">
     </div>
