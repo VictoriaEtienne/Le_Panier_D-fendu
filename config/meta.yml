@@ -1,0 +1,5 @@
+meta_product_name: "Le Panier Défendu"
+meta_title: "Le Panier Défendu - Bien manger, ça se défend"
+meta_description: "Trouver des produits bio et locaux pour soutenir nos agriculteurs"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account" # required for Twitter Cards
