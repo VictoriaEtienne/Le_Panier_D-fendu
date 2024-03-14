@@ -740,8 +740,7 @@ ShopAlternative.create!(
   shop: shop_gramme
 )
 
-
-history= History.new(
+history = History.new(
   user: user,
   scanned_product_alternative: ProductAlternative.find_by("name ILIKE ?", "kiwi"),
   shop: ProductAlternative.find_by("name ILIKE ?", "kiwi").shops.first,
