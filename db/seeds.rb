@@ -19,7 +19,7 @@ Shop.destroy_all
 puts "Records destroyed"
 #NEW SEED
 
-User.create!(
+user = User.create!(
   email: "test@test.com",
   password: "azerty"
 )
@@ -468,6 +468,107 @@ kiwi = ProductAlternative.create!(
   bar_code: "00000028"
 )
 
+#start
+# product_element = "Chou Romanesco"
+# chou_romanesco_product_alternatives = Product.where("name ILIKE ?", "%#{product_element}%").map(&:product_alternatives).flatten
+# worst_product = chou_romanesco_product_alternatives.sort_by(&:eco_score).last
+# best_product = chou_romanesco_product_alternatives.sort_by(&:eco_score).first
+# # Product.where("name ILIKE ?", "%chou romanesco%").map do |product|
+
+# custom_product_4 = Product.new(name: "Chou Romanesco")
+# chou_romanesco_bad = ProductAlternative.create!(
+#   product: custom_product_4,
+#   name: "Chou Romanesco",
+#   eco_score: worst_product.eco_score,
+#   environment: worst_product.environment,
+#   health: worst_product.health.merge(
+#     pesticides: pesticides_mapping["Chou Romanesco Franprix"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Chou Romanesco Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "01234567"
+# )
+
+# chou_romanesco = ProductAlternative.create!(
+#   product: custom_product_4,
+#   name: "Chou Romanesco",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Chou Romanesco La Main Verte"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Chou Romanesco La Main Verte"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "00000028"
+# )
+
+# product_element = "Pomme"
+# pomme_product_alternatives = Product.where("name ILIKE ?", "%#{product_element}%").map(&:product_alternatives).flatten
+# worst_product = pomme_product_alternatives.sort_by(&:eco_score).last
+# best_product = pomme_product_alternatives.sort_by(&:eco_score).first
+# # Product.where("name ILIKE ?", "%pomme%").map do |product|
+
+# custom_product_5 = Product.new(name: "Pomme")
+# pomme_bad = ProductAlternative.create!(
+#   product: custom_product_5,
+#   name: "Pomme",
+#   eco_score: worst_product.eco_score,
+#   environment: worst_product.environment,
+#   health: worst_product.health.merge(
+#     pesticides: pesticides_mapping["Pomme Leclerc"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Pomme"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "01234567"
+# )
+
+# pomme = ProductAlternative.create!(
+#   product: custom_product_5,
+#   name: "Pomme",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Pomme La Main Verte"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Pomme Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "00000028"
+# )
+
+# product_element = "Radis"
+# radis_product_alternatives = Product.where("name ILIKE ?", "%#{product_element}%").map(&:product_alternatives).flatten
+# worst_product = radis_product_alternatives.sort_by(&:eco_score).last
+# best_product = radis_product_alternatives.sort_by(&:eco_score).first
+# # Product.where("name ILIKE ?", "%radis%").map do |product|
+
+# custom_product_6 = Product.new(name: "Radis")
+# radis_bad = ProductAlternative.create!(
+#   product: custom_product_6,
+#   name: "Radis",
+#   eco_score: worst_product.eco_score,
+#   environment: worst_product.environment,
+#   health: worst_product.health.merge(
+#     pesticides: pesticides_mapping["Radis Leclerc"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Radis"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "01234567"
+# )
+
+# radis = ProductAlternative.create!(
+#   product: custom_product_6,
+#   name: "Radis",
+#   eco_score: best_product.eco_score,
+#   environment: best_product.environment,
+#   health: best_product.health.merge(
+#     pesticides: pesticides_mapping["Radis La Main Verte"].map { |p| pesticide_associations[p] },
+#     pesticide_effects: pesticides_mapping["Radis Franprix"].map { |p| pesticides_effects[pesticide_associations[p]] },
+#   ),
+#   bar_code: "00000028"
+# )
+
+# history_entry = History.create!(
+#   action: "add_product",
+#   product: custom_product_5,
+#   user_id: 29
+# )
+#end
+
 puts "Custom products created"
 
 shop_main_verte = Shop.find_by(name: "LA MAIN VERTE")
@@ -489,50 +590,50 @@ shop_gramme = Shop.find_by(name: "GRAMME")
 #end
 # this is where we are going to attach an image on the model
 shop_miyam.photo.attach(
-io: File.open('public/images/Miyam.jpg'),
-filename: 'Miyam.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+  io: File.open('public/images/Miyam.jpg'),
+  filename: 'Miyam.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
 )
 shop_miyam.save!
 
 shop_saisonniers.photo.attach(
-io: File.open('public/images/les_saisonniers.jpg'),
-filename: 'les_saisonniers.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+  io: File.open('public/images/les_saisonniers.jpg'),
+  filename: 'les_saisonniers.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
 )
 shop_saisonniers.save!
 
 shop_400_coop.photo.attach(
-io: File.open('public/images/les_400_coop.jpg'),
-filename: 'les_400_coop.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+  io: File.open('public/images/les_400_coop.jpg'),
+  filename: 'les_400_coop.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
 )
 shop_400_coop.save!
 
 shop_producteur_local.photo.attach(
-io: File.open('public/images/le_producteur_local.jpg'),
-filename: 'le_producteur_local.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+  io: File.open('public/images/le_producteur_local.jpg'),
+  filename: 'le_producteur_local.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
 )
 shop_producteur_local.save!
 
 shop_main_verte.photo.attach(
-io: File.open('public/images/la_main_verte.jpg'),
-filename: 'la_main_verte.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+  io: File.open('public/images/la_main_verte.jpg'),
+  filename: 'la_main_verte.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
 )
 shop_main_verte.save!
 
 shop_kelbongoo.photo.attach(
-io: File.open('public/images/kelbongoo.jpg'),
-filename: 'kelbongoo.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+  io: File.open('public/images/kelbongoo.jpg'),
+  filename: 'kelbongoo.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
 )
 shop_kelbongoo.save!
 
 shop_louve.photo.attach(
-io: File.open('public/images/cooperative_la_louve.jpg'),
-filename: 'cooperative_la_louve.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+  io: File.open('public/images/cooperative_la_louve.jpg'),
+  filename: 'cooperative_la_louve.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
 )
 shop_louve.save!
 
 shop_altervojo.photo.attach(
-io: File.open('public/images/altervojo.jpg'),
-filename: 'altervojo.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
+  io: File.open('public/images/altervojo.jpg'),
+  filename: 'altervojo.jpg', # use the extension of the attached file here content_type: 'image/jpg' # use the mime type of the attached file here
 )
 shop_altervojo.save!
 
@@ -638,3 +739,14 @@ ShopAlternative.create!(
   product_alternative: carotte,
   shop: shop_gramme
 )
+
+
+history= History.new(
+  user: user,
+  scanned_product_alternative: ProductAlternative.find_by("name ILIKE ?", "kiwi"),
+  shop: ProductAlternative.find_by("name ILIKE ?", "kiwi").shops.first,
+  lat: 48.8630998,
+  lng: 2.3816098
+)
+
+history.save!
