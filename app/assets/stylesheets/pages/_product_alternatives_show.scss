@@ -201,18 +201,18 @@
 
 #alternative-button {
   position: fixed;
-  bottom: 150px;
+  bottom: 120px;
   width: 82%;
   height: 55px;
   margin-left: 3px;
-  border-color: white;
+  border-color: #1DDD50;
   font-family: 'Quicksand', sans-serif;
   font-weight: bold; /* Mise en gras */
   font-size: 20px;
 }
 
 #shop-button {
-  border-color: white;
+  border-color: none!important;
   font-family: 'Quicksand', sans-serif;
   font-weight: bold; /* Mise en gras */
   font-size: 20px;
