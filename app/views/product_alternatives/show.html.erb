@@ -5,9 +5,9 @@
 
   <div class="product-alternative bgblack d-grid gap-2 col-6 mx-auto" >
   <% if @product_alternative.shops.first == "LA MAIN VERTE" %>
-    <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(" ")}_0.jpg" %>);">
+    <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(" ")}_0.png" %>);">
   <% else %>
-    <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(" ")}.jpg" %>);">
+    <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(" ")}.png" %>);">
   <% end %>
       <%= image_tag "pictos/eco_score_e.svg", alt: "Ecoscore", style: "width: 15%", class: "picto-icon"%>
       <h3 class="justify-content-end"> <%= @product_alternative.product.name %></h3>
@@ -81,7 +81,7 @@
 
             <div class="rounded-large mx-3 px-4 py-3">
               <% @alternatives.each_with_index do |alt, index| %>
-                  <div class="card-product mb-3" style="background-image: url(<%= asset_path "carotte_#{index}.jpg" %>);">
+                  <div class="card-product mb-3" style="background-image: url(<%= asset_path "carotte_#{index}.png" %>);">
                     <% if index == 2  %>
                       <%= image_tag "pictos/picto_b.svg", alt: "Ecoscore", style: "width: 14%", class: "picto-icon-alternative"%>
                     <% else %>
