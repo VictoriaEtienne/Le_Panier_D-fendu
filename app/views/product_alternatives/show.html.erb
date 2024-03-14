@@ -4,7 +4,7 @@
   </div>
 
   <div class="product-alternative bgblack d-grid gap-2 col-6 mx-auto">
-    <div class="product-container rounded-large px-4 py-3">
+    <div class="product-container rounded-large px-4 py-3" style="opacity: 0.8; font-weight: bolder;">
 
       <%= image_tag "pictos/eco_score_e.svg", alt: "Ecoscore", style: "width: 15%", class: "picto-icon"%>
       <h3 class="justify-content-end"> <%= @product_alternative.product.name %></h3>
@@ -76,7 +76,7 @@
               <h5 class="offcanvas-title" id="offcanvasBottomLabel"::before>Alternatives</h5>
             </div>
 
-            <div class="rounded-large mx-3 px-4 py-3">
+            <div class="rounded-large mx-3 px-4 py-3" style="opacity: 0.8; font-weight: bolder;">
               <% @alternatives.each do |alt| %>
                   <div class="card-product">
                     <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot"%>
@@ -89,7 +89,7 @@
                 </div>
               <% end %>
 
-            <div class="rounded-large mx-3 px-4 py-3">
+            <div class="rounded-large mx-3 px-4 py-3" style="opacity: 0.8; font-weight: bolder;">
               <% @alternatives.each do |alt| %>
                   <div class="card-product">
                     <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot"%>
@@ -102,7 +102,7 @@
                 </div>
               <% end %>
 
-            <div class="rounded-large mx-3 px-4 py-3">
+            <div class="rounded-large mx-3 px-4 py-3"style="opacity: 0.8; font-weight: bolder;">
               <% @alternatives.each do |alt| %>
                   <div class="card-product">
                     <%= image_tag "product_alter_bad_carot.png", alt: "Product alternative Carrot"%>
@@ -114,7 +114,7 @@
                   </div>
                 </div>
               <% end %>
-              <%= link_to product_alternative_shops_path(@product_alternative), id: "shop-button", class: " btn btn-alternative btn-success btn-lg-light " do %>
+              <%= link_to product_alternative_shops_path(@product_alternative), id: "shop-button", class: " btn btn-alternative btn-success btn-lg-light" do %>
                 Afficher les magasins
               <% end %>
           </div>
