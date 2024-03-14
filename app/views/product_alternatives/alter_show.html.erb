@@ -6,9 +6,9 @@
 
     <div class="product-alternative bgblack d-grid gap-2 col-6 mx-auto" >
       <% if @history.shop.name == "LA MAIN VERTE" %>
-        <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(" ")}_0.png" %>);">
+        <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(' ')}_0.png" %>);">
       <% else %>
-        <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(" ")}.png" %>);">
+        <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(' ')}.png" %>);">
       <% end %>
       <% if @history.shop.name == "LA MAIN VERTE" %>
         <%= image_tag "pictos/eco_score_a.svg", alt: "Ecoscore", style: "width: 15%", class: "picto-icon"%>
