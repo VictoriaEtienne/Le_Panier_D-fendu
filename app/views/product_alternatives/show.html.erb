@@ -5,7 +5,7 @@
 
   <div class="product-alternative bgblack d-grid gap-2 col-6 mx-auto" >
   <% if @product_alternative.shops.first == "LA MAIN VERTE" %>
-    <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(" ")}_0.jpg" %>);">
+    <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(" ")}1.jpg" %>);">
   <% else %>
     <div class="product-container rounded-large px-4 py-3" style="background-image: url(<%= asset_path "#{@product_alternative.name.downcase.delete(" ")}.jpg" %>);">
   <% end %>
