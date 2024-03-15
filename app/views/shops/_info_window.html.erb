@@ -2,7 +2,7 @@
     <% if shop.photo.attached? %>
       <%= cl_image_tag shop.photo.key, alt: "Popup Image", class: "img-pop"%>
     <% else %>
-      <%= image_tag "magasin_bio.jpg", alt: "Popup Image", class: "img-pop"%>
+      <%= image_tag "magasin_bio.png", alt: "Popup Image", class: "img-pop"%>
     <% end %>
     <div class="text-pop">
       <h4 class="card-title-roboto"><%= shop.name %></h4>
